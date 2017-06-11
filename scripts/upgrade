@@ -92,6 +92,8 @@ fi
 # Create tmp directory and fetch app inside
 TMPDIR=$(ynh_mkdir_tmp)
 ynh_setup_source "$TMPDIR"
+# Fetch needed plugins
+ynh_setup_source "$TMPDIR/plugins" log_failed_logins_plugin
 
 #=================================================
 # CREATE DEDICATED USER
@@ -144,6 +146,18 @@ sudo cp ../conf/database.inc.php $final_path/local/config/database.inc.php
 
 # Activate ldap plugin
 ynh_mysql_connect_as $db_name $db_pwd $db_user <<< "UPDATE plugins SET state='active' WHERE id='Ldap_Login';"
+
+# Configure and activate log_failed_logins plugin
+ynh_mysql_connect_as $db_name $db_pwd $db_user <<< "INSERT INTO plugins (id,state,version) VALUES ('log_failed_logins','active','1.2');" 2>&1 > /dev/null ||ynh_mysql_connect_as $db_name $db_pwd $db_user <<< "UPDATE plugins SET state='active' WHERE id='log_failed_logins';"
+ynh_mysql_connect_as $db_name $db_pwd $db_user <<< "INSERT INTO config (param, value) VALUES ('logFailedLoginsFilename','/var/log/${app}FailedLogins.log');" 2>&1 > /dev/null || ynh_mysql_connect_as $db_name $db_pwd $db_user <<< "UPDATE config SET value='/var/log/${app}FailedLogins.log' WHERE param='logFailedLoginsFilename';"
+sudo touch "/var/log/${app}FailedLogins.log"
+sudo chown $app: "/var/log/${app}FailedLogins.log"
+
+# Set-up fail2ban
+ynh_replace_string "__NAME__" "$app" ../conf/fail2ban/jaild.conf
+sudo cp ../conf/fail2ban/jaild.conf /etc/fail2ban/jail.d/$app.conf
+sudo cp ../conf/fail2ban/filterd.conf /etc/fail2ban/filter.d/$app.conf
+sudo systemctl restart fail2ban
 
 # Protect URIs if private
 if [ $is_public -eq 0 ];

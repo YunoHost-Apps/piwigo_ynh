@@ -72,6 +72,13 @@ ynh_system_user_create $app	# Recreate the dedicated user, if not existing
 sudo chown -R $app: $final_path
 
 #=================================================
+# RESTORE FAIL2BAN CONFIGURATION
+#=================================================
+sudo cp -a ./jaild.conf "/etc/fail2ban/jail.d/$app.conf"
+sudo cp -a ./filterd.conf "/etc/fail2ban/filter.d/$app.conf"
+sudo systemctl restart fail2ban
+
+#=================================================
 # RESTORE PHP-FPM CONFIGURATION
 #=================================================
 

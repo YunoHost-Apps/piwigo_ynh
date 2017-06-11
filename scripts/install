@@ -16,11 +16,6 @@ source /usr/share/yunohost/helpers
 
 ynh_abort_if_errors	# Stop script if an error is detected
 
-ynh_clean_setup () {                      # <============================================= TODO
-    log=$(sudo cat /var/log/nginx/$domain-error.log)
-    echo $log
-}
-
 #=================================================
 # RETRIEVE ARGUMENTS FROM THE MANIFEST
 #=================================================
@@ -82,6 +77,8 @@ ynh_app_setting_set $app final_path "$final_path"
 # Create tmp directory and fetch app inside
 TMPDIR=$(mktemp -d)
 ynh_setup_source "$TMPDIR"
+# Fetch needed plugins
+ynh_setup_source "$TMPDIR/plugins" log_failed_logins_plugin
 
 #=================================================
 # CREATE DEDICATED USER
@@ -145,8 +142,20 @@ ynh_replace_string "USERTOCHANGE" "$db_user" ../conf/database.inc.php
 ynh_replace_string "PASSTOCHANGE" "$db_pwd" ../conf/database.inc.php
 sudo cp ../conf/database.inc.php $final_path/local/config/database.inc.php
 
-# Activate ldap plugin
+# Activate LDAP plugin
 ynh_mysql_connect_as $db_name $db_pwd $db_user <<< "INSERT INTO plugins (id,state,version) VALUES ('Ldap_Login','active','1.1');"
+
+# Configure and activate log_failed_logins plugin
+ynh_mysql_connect_as $db_name $db_pwd $db_user <<< "INSERT INTO plugins (id,state,version) VALUES ('log_failed_logins','active','1.2');"
+ynh_mysql_connect_as $db_name $db_pwd $db_user <<< "INSERT INTO config (param, value) VALUES ('logFailedLoginsFilename','/var/log/${app}FailedLogins.log');"
+sudo touch "/var/log/${app}FailedLogins.log"
+sudo chown $app: "/var/log/${app}FailedLogins.log"
+
+# Set-up fail2ban
+ynh_replace_string "__NAME__" "$app" ../conf/fail2ban/jaild.conf
+sudo cp ../conf/fail2ban/jaild.conf /etc/fail2ban/jail.d/$app.conf
+sudo cp ../conf/fail2ban/filterd.conf /etc/fail2ban/filter.d/$app.conf
+sudo systemctl restart fail2ban
 
 # Protect URIs if private
 if [ $is_public -eq 0 ];
