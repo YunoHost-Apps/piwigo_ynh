@@ -154,10 +154,7 @@ sudo touch "/var/log/${app}FailedLogins.log"
 sudo chown $app: "/var/log/${app}FailedLogins.log"
 
 # Set-up fail2ban
-ynh_replace_string "__NAME__" "$app" ../conf/fail2ban/jaild.conf
-sudo cp ../conf/fail2ban/jaild.conf /etc/fail2ban/jail.d/$app.conf
-sudo cp ../conf/fail2ban/filterd.conf /etc/fail2ban/filter.d/$app.conf
-sudo systemctl restart fail2ban
+ynh_add_fail2ban_config "/var/log/${app}FailedLogins.log" "ip=<HOST>" 6
 
 # Protect URIs if private
 if [ $is_public -eq 0 ];

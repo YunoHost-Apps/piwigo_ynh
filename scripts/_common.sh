@@ -574,3 +574,77 @@ ynh_local_curl () {
 	# Curl the URL
 	curl --silent --show-error -kL -H "Host: $domain" -X POST --resolve $domain:443:127.0.0.1 $POST_data "$full_page_url"
 }
+
+# Create a dedicated fail2ban config (jail and filter conf files)
+#
+# usage: ynh_add_fail2ban_config log_file filter [max_retry [ports]]
+# | arg: log_file - Log file to be checked by fail2ban
+# | arg: failregex - Failregex to be looked for by fail2ban
+# | arg: max_retry - Maximum number of retries allowed before banning IP address - default: 3
+# | arg: ports - Ports blocked for a banned IP address - default: http,https
+ynh_add_fail2ban_config () {
+   # Process parameters
+   logpath=$1
+   failregex=$2
+   max_retry=${3:-3}
+   ports=${4:-http,https}
+   
+  test -n "$logpath" || ynh_die "ynh_add_fail2ban_config expects a logfile path as first argument and received nothing."
+  test -n "$failregex" || ynh_die "ynh_add_fail2ban_config expects a failure regex as second argument and received nothing."
+  
+	finalfail2banjailconf="/etc/fail2ban/jail.d/$app.conf"
+	finalfail2banfilterconf="/etc/fail2ban/filter.d/$app.conf"
+	ynh_backup_if_checksum_is_different "$finalfail2banjailconf" 1
+	ynh_backup_if_checksum_is_different "$finalfail2banfilterconf" 1
+  
+  cat > ./jaild.conf << EOF
+[__NAME__]
+enabled = true
+port = __PORTS__
+filter = __NAME__
+logpath = __LOGPATH__
+maxretry = __MAXRETRY__
+EOF
+
+  cat > ./filterd.conf << EOF
+[INCLUDES]
+before = common.conf
+[Definition]
+failregex = __FAILREGEX__
+ignoreregrex =
+EOF
+  sudo mv ./jaild.conf $finalfail2banjailconf
+  sudo mv ./filterd.conf $finalfail2banfilterconf
+  
+	# To avoid a break by set -u, use a void substitution ${var:-}. If the variable is not set, it's simply set with an empty variable.
+	# Substitute in config file only if the variable is not empty
+  
+  # jail configuration file
+	if test -n "${app:-}"; then
+		ynh_replace_string "__NAME__" "$app" "$finalfail2banjailconf"
+	fi
+	if test -n "${logpath:-}"; then
+		ynh_replace_string "__LOGPATH__" "$logpath" "$finalfail2banjailconf"
+	fi
+  ynh_replace_string "__PORTS__" "$ports" "$finalfail2banjailconf"
+  ynh_replace_string "__MAXRETRY__" "$max_retry" "$finalfail2banjailconf"
+  
+  # filter configuration file
+	if test -n "${failregex:-}"; then
+		ynh_replace_string "__FAILREGEX__" "$failregex" "$finalfail2banfilterconf"
+	fi
+
+	ynh_store_file_checksum "$finalfail2banjailconf"
+	ynh_store_file_checksum "$finalfail2banfilterconf"
+  
+	sudo systemctl restart fail2ban
+}
+
+# Remove the dedicated fail2ban config (jail and filter conf files)
+#
+# usage: ynh_remove_fail2ban_config
+ynh_remove_fail2ban_config () {
+	ynh_secure_remove "/etc/fail2ban/jail.d/$app.conf"
+  ynh_secure_remove "/etc/fail2ban/filter.d/$app.conf"
+	sudo systemctl restart fail2ban
+}
