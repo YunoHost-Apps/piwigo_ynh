@@ -597,42 +597,18 @@ ynh_add_fail2ban_config () {
 	ynh_backup_if_checksum_is_different "$finalfail2banjailconf" 1
 	ynh_backup_if_checksum_is_different "$finalfail2banfilterconf" 1
   
-  cat > ./jaild.conf << EOF
-[__NAME__]
+  echo "[$app]
 enabled = true
-port = __PORTS__
-filter = __NAME__
-logpath = __LOGPATH__
-maxretry = __MAXRETRY__
-EOF
+port = $ports
+filter = $app
+logpath = $logpath
+maxretry = $max_retry" | sudo tee $finalfail2banjailconf 
 
-  cat > ./filterd.conf << EOF
-[INCLUDES]
+  echo  "[INCLUDES]
 before = common.conf
 [Definition]
-failregex = __FAILREGEX__
-ignoreregrex =
-EOF
-  sudo mv ./jaild.conf $finalfail2banjailconf
-  sudo mv ./filterd.conf $finalfail2banfilterconf
-  
-	# To avoid a break by set -u, use a void substitution ${var:-}. If the variable is not set, it's simply set with an empty variable.
-	# Substitute in config file only if the variable is not empty
-  
-  # jail configuration file
-	if test -n "${app:-}"; then
-		ynh_replace_string "__NAME__" "$app" "$finalfail2banjailconf"
-	fi
-	if test -n "${logpath:-}"; then
-		ynh_replace_string "__LOGPATH__" "$logpath" "$finalfail2banjailconf"
-	fi
-  ynh_replace_string "__PORTS__" "$ports" "$finalfail2banjailconf"
-  ynh_replace_string "__MAXRETRY__" "$max_retry" "$finalfail2banjailconf"
-  
-  # filter configuration file
-	if test -n "${failregex:-}"; then
-		ynh_replace_string "__FAILREGEX__" "$failregex" "$finalfail2banfilterconf"
-	fi
+failregex = $failregex
+ignoreregrex =" | sudo tee $finalfail2banfilterconf
 
 	ynh_store_file_checksum "$finalfail2banjailconf"
 	ynh_store_file_checksum "$finalfail2banfilterconf"
