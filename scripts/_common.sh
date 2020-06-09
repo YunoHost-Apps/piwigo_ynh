@@ -4,7 +4,7 @@
 # COMMON VARIABLES
 #=================================================
 
-pkg_dependencies="php-gd php-imagick imagemagick"
+pkg_dependencies="php7.0-gd php7.0-imagick imagemagick"
 
 #=================================================
 # EXPERIMENTAL HELPERS
