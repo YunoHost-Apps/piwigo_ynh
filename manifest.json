@@ -6,7 +6,7 @@
         "en": "Open source photo gallery for the web",
         "fr": "Galerie de photos open source pour le web"
     },
-    "version": "2.10.2~ynh2",
+    "version": "11.0.0~ynh0",
     "url": "http://piwigo.org",
     "license": "GPL-2.0",
     "maintainer": {
