@@ -6,7 +6,7 @@
         "en": "Open source photo gallery for the web",
         "fr": "Galerie de photos open source pour le web"
     },
-    "version": "11.0.0~ynh0",
+    "version": "11.1.0~ynh0",
     "url": "http://piwigo.org",
     "license": "GPL-2.0",
     "maintainer": {
@@ -20,7 +20,7 @@
     "multi_instance": true,
     "services": [
         "nginx",
-        "php7.0-fpm",
+        "php7.3-fpm",
         "mysql"
     ],
     "arguments": {
@@ -69,7 +69,7 @@
                     "en": "Choose the application language",
                     "fr": "Choisissez la langue de l'application"
                 },
-                "choices": ["fr", "en"],
+                "choices": ["de", "en", "es", "fr", "it", "pt"],
                 "default": "en"
              }
         ]
