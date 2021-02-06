@@ -74,6 +74,13 @@ then
 	ynh_app_setting_delete --app=$app --key=path_url
 fi
 
+# Cleaning legacy permissions
+if ynh_legacy_permissions_exists; then
+  ynh_legacy_permissions_delete_all
+
+  ynh_app_setting_delete --app=$app --key=is_public
+fi
+
 #=================================================
 # BACKUP BEFORE UPGRADE THEN ACTIVE TRAP
 #=================================================
@@ -121,7 +128,7 @@ ynh_add_nginx_config
 #=================================================
 ynh_script_progression --message="Upgrading dependencies..." --weight=6
 
-ynh_install_app_dependencies "$pkg_dependencies"
+ynh_install_app_dependencies $pkg_dependencies
 
 #=================================================
 # CREATE DEDICATED USER
@@ -274,18 +281,6 @@ ynh_add_fail2ban_config --logpath="/var/log/${app}FailedLogins.log" --failregex=
 
 #=================================================
 # GENERIC FINALIZATION
-#=================================================
-# SETUP SSOWAT
-#=================================================
-ynh_script_progression --message="Upgrading SSOwat configuration..."
-
-# Protect URIs if private
-if [ $is_public -eq 0 ]
-then
-  ynh_app_setting_delete --app=$app --key=unprotected_uris
-  ynh_app_setting_set --app=$app --key=protected_uris --value="/"
-fi
-
 #=================================================
 # RELOAD NGINX
 #=================================================
