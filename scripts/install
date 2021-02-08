@@ -235,13 +235,14 @@ ynh_add_fail2ban_config --logpath="/var/log/${app}FailedLogins.log" --failregex=
 #=================================================
 # SETUP SSOWAT
 #=================================================
-ynh_script_progression --message="Configuring SSOwat..."
+ynh_script_progression --message="Configuring permissions..."
 
-# Protect URIs if private
-if [ $is_public -eq 0 ]
+# Make app public if necessary
+if [ $is_public -eq 1 ]
 then
-  ynh_app_setting_delete --app=$app --key=unprotected_uris
-  ynh_app_setting_set --app=$app --key=protected_uris --value="/"
+	# Everyone can access the app.
+	# The "main" permission is automatically created before the install script.
+	ynh_permission_update --permission="main" --add="visitors"
 fi
 
 #=================================================
