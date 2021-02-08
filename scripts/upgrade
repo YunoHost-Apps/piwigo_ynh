@@ -190,9 +190,8 @@ chmod 755 -R $final_path/_data
 #=================================================
 ynh_script_progression --message="Upgrading Piwigo with cURL..." --weight=6
 
-ynh_app_setting_set --app=$app --key=unprotected_uris --value="/"
-# Reload SSOwat config
-yunohost app ssowatconf
+# Set the app as temporarily public for cURL call
+ynh_permission_update --permission="main" --add="visitors"
 
 # Reload NGINX
 ynh_systemd_action --service_name=nginx --action=reload
@@ -278,6 +277,17 @@ touch "/var/log/${app}FailedLogins.log"
 chown $app: "/var/log/${app}FailedLogins.log"
 
 ynh_add_fail2ban_config --logpath="/var/log/${app}FailedLogins.log" --failregex="ip=<HOST>" --max_retry=6
+
+#=================================================
+# SETUP SSOWAT
+#=================================================
+ynh_script_progression --message="Configuring permissions..."
+
+# Make app public if necessary
+if [ $is_public -eq 0 ]
+then
+  ynh_permission_update --permission="main" --remove="visitors"
+fi
 
 #=================================================
 # GENERIC FINALIZATION

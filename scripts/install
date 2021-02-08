@@ -146,11 +146,10 @@ phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
 #=================================================
 ynh_script_progression --message="Installing Piwigo with cURL..." --weight=5
 
-ynh_app_setting_set --app=$app --key=unprotected_uris --value="/"
-# Reload SSOwat config
-yunohost app ssowatconf
+# Set the app as temporarily public for cURL call
+ynh_permission_update --permission="main" --add="visitors"
 
-# Reload Nginx
+# Reload NGINX
 ynh_systemd_action --service_name=nginx --action=reload
 
 # Generate random password for admin
@@ -238,11 +237,9 @@ ynh_add_fail2ban_config --logpath="/var/log/${app}FailedLogins.log" --failregex=
 ynh_script_progression --message="Configuring permissions..."
 
 # Make app public if necessary
-if [ $is_public -eq 1 ]
+if [ $is_public -eq 0 ]
 then
-	# Everyone can access the app.
-	# The "main" permission is automatically created before the install script.
-	ynh_permission_update --permission="main" --add="visitors"
+	ynh_permission_update --permission="main" --remove="visitors"
 fi
 
 #=================================================
