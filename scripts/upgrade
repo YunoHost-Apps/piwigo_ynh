@@ -24,6 +24,7 @@ final_path=$(ynh_app_setting_get --app=$app --key=final_path)
 language=$(ynh_app_setting_get --app=$app --key=language)
 db_name=$(ynh_app_setting_get --app=$app --key=db_name)
 admin_pwd=$(ynh_app_setting_get --app=$app --key=admin_pwd)
+db_pwd=$(ynh_app_setting_get --app=$app --key=mysqlpwd)
 
 #=================================================
 # CHECK VERSION
@@ -223,13 +224,7 @@ ynh_store_file_checksum --file="$final_path/local/config/config.inc.php"
 # Make a backup of the original database config file if modified
 ynh_backup_if_checksum_is_different --file="$final_path/local/config/database.inc.php"
 
-# Setup database in local/config/database.inc.php
-ynh_replace_string --match_string="__DBTOCHANGE__" --replace_string="$db_name" --target_file=../conf/database.inc.php
-ynh_replace_string --match_string="__USERTOCHANGE__" --replace_string="$db_name" --target_file=../conf/database.inc.php
-db_pwd=$(ynh_app_setting_get --app=$app --key=mysqlpwd)
-ynh_replace_string --match_string="__PASSTOCHANGE__" --replace_string="$db_pwd" --target_file=../conf/database.inc.php
-
-cp ../conf/database.inc.php $final_path/local/config/database.inc.php
+ynh_add_config --template="../conf/database.inc.php" --destination="$final_path/local/config/database.inc.php"
 
 # Calculate and store the database config file checksum
 ynh_store_file_checksum --file="$final_path/local/config/database.inc.php"

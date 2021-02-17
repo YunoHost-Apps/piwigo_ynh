@@ -69,7 +69,7 @@ ynh_backup --src_path="/etc/fail2ban/filter.d/$app.conf"
 # BACKUP THE DATA DIRECTORY
 #=================================================
 
-ynh_backup --src_path="/home/yunohost.app/${app}/upload" --is_big
+ynh_backup --src_path="/home/yunohost.app/$app/upload" --is_big
 
 #=================================================
 # END OF SCRIPT

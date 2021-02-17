@@ -181,11 +181,7 @@ cp ../conf/config.inc.php $final_path/local/config/
 ynh_store_file_checksum --file="$final_path/local/config/config.inc.php"
 
 # Setup database in local/config/database.inc.php
-ynh_replace_string --match_string="__DBTOCHANGE__" --replace_string="$db_name" --target_file=../conf/database.inc.php
-ynh_replace_string --match_string="__USERTOCHANGE__" --replace_string="$db_name" --target_file=../conf/database.inc.php
-ynh_replace_string --match_string="__PASSTOCHANGE__" --replace_string="$db_pwd" --target_file=../conf/database.inc.php
-
-cp ../conf/database.inc.php $final_path/local/config/database.inc.php
+ynh_add_config --template="../conf/database.inc.php" --destination="$final_path/local/config/database.inc.php"
 
 # Calculate and store the database config file checksum
 ynh_store_file_checksum --file="$final_path/local/config/database.inc.php"
