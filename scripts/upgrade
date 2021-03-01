@@ -192,10 +192,7 @@ chmod 755 -R $final_path/_data
 ynh_script_progression --message="Upgrading Piwigo with cURL..." --weight=6
 
 # Set the app as temporarily public for cURL call
-ynh_permission_has_user --permission="main" --user="visitors"
-contains_visitors=$?
-
-if [ $contains_visitors -eq 1 ]
+if ! ynh_permission_has_user --permission="main" --user="visitors"
 then
     ynh_permission_update --permission="main" --add="visitors"
 fi
