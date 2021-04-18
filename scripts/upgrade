@@ -215,21 +215,23 @@ ynh_local_curl "/upgrade.php?language=$applanguage&now=true" "language=$applangu
 ynh_script_progression --message="Configuring Piwigo..."
 
 # Make a backup of the original config file if modified
-ynh_backup_if_checksum_is_different --file="$final_path/local/config/config.inc.php"
+#ynh_backup_if_checksum_is_different --file="$final_path/local/config/config.inc.php"
 
 # Change local config
-cp ../conf/config.inc.php $final_path/local/config/
+#cp ../conf/config.inc.php $final_path/local/config/
 
 # Calculate and store the config file checksum
-ynh_store_file_checksum --file="$final_path/local/config/config.inc.php"
+#ynh_store_file_checksum --file="$final_path/local/config/config.inc.php"
+
+ynh_add_config --template="../conf/config.inc.php" --destination="$final_path/local/config/config.inc.php"
 
 # Make a backup of the original database config file if modified
-ynh_backup_if_checksum_is_different --file="$final_path/local/config/database.inc.php"
+#ynh_backup_if_checksum_is_different --file="$final_path/local/config/database.inc.php"
 
 ynh_add_config --template="../conf/database.inc.php" --destination="$final_path/local/config/database.inc.php"
 
 # Calculate and store the database config file checksum
-ynh_store_file_checksum --file="$final_path/local/config/database.inc.php"
+#ynh_store_file_checksum --file="$final_path/local/config/database.inc.php"
 
 #=================================================
 # CONFIGURE LDAP PLUGIN

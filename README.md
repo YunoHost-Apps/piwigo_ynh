@@ -39,8 +39,8 @@ In addition to Piwigo core features, the following are made available with this 
 
 #### Supported architectures
 
-* x86-64 - [![Build Status](https://ci-apps.yunohost.org/ci/logs/piwigo%20%28Apps%29.svg)](https://ci-apps.yunohost.org/ci/apps/piwigo/)
-* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/piwigo%20%28Apps%29.svg)](https://ci-apps-arm.yunohost.org/ci/apps/piwigo/)
+* x86-64 - [![Build Status](https://ci-apps.yunohost.org/ci/logs/piwigo.svg)](https://ci-apps.yunohost.org/ci/apps/piwigo/)
+* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/piwigo.svg)](https://ci-apps-arm.yunohost.org/ci/apps/piwigo/)
 
 ## Limitations
 
