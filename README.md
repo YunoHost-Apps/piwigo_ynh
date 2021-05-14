@@ -10,7 +10,7 @@ If you don't have YunoHost, please see [here](https://yunohost.org/#/install) to
 
 [Piwigo](http://piwigo.org) is a photo gallery software for the web, built by an active community of users and developers. Extensions make Piwigo easily customizable.
 
-**Shipped version:** 11.3.0
+**Shipped version:** 11.5.0
 
 ## Screenshots
 

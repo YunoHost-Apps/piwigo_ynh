@@ -174,17 +174,8 @@ ynh_local_curl "/install.php?language=$applanguage" "install=true" "dbuser=$db_n
 #=================================================
 ynh_script_progression --message="Configuring Piwigo..."
 
-# Change local config
-cp ../conf/config.inc.php $final_path/local/config/
-
-# Calculate and store the config file checksum
-ynh_store_file_checksum --file="$final_path/local/config/config.inc.php"
-
-# Setup database in local/config/database.inc.php
+ynh_add_config --template="../conf/config.inc.php" --destination="$final_path/local/config/config.inc.php"
 ynh_add_config --template="../conf/database.inc.php" --destination="$final_path/local/config/database.inc.php"
-
-# Calculate and store the database config file checksum
-ynh_store_file_checksum --file="$final_path/local/config/database.inc.php"
 
 #=================================================
 # ADD LDAP PLUGIN
