@@ -6,7 +6,7 @@
         "en": "Open source photo gallery for the web",
         "fr": "Galerie de photos open source pour le web"
     },
-    "version": "11.5.0~ynh1",
+    "version": "12.0.0~ynh1",
     "url": "http://piwigo.org",
     "license": "GPL-2.0",
     "maintainer": {
@@ -15,7 +15,7 @@
         "url": ""
     },
     "requirements": {
-        "yunohost": ">= 4.1.3"
+        "yunohost": ">= 4.2.3"
     },
     "multi_instance": true,
     "services": [
@@ -27,8 +27,7 @@
         "install" : [
             {
                 "name": "domain",
-                "type": "domain",
-                "example": "domain.org"
+                "type": "domain"
             },
             {
                 "name": "path",
@@ -38,8 +37,7 @@
             },
             {
                 "name": "admin",
-                "type": "user",
-                "example": "homer"
+                "type": "user"
             },
             {
                 "name": "is_public",

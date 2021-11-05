@@ -101,7 +101,6 @@ mkdir $final_path
 cp -a $tmpdir/!(upload|_data|galleries) $final_path
 
 datapath=/home/yunohost.app/$app
-ynh_app_setting_set --app=$app --key=datapath --value=$datapath
 
 mkdir -p $datapath/_data
 mkdir -p $datapath/upload
