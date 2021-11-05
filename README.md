@@ -20,7 +20,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 
 **Shipped version:** 12.0.0~ynh1
 
-
+**Demo:** https://piwigo.org/demo
 
 ## Screenshots
 
@@ -40,6 +40,9 @@ In addition to Piwigo core features, the following are made available with this 
 
 ## Documentation and resources
 
+* Official app website: http://piwigo.org
+* Official admin documentation: https://piwigo.org/guides
+* Upstream app code repository: https://github.com/Piwigo/Piwigo
 * YunoHost documentation for this app: https://yunohost.org/app_piwigo
 * Report a bug: https://github.com/YunoHost-Apps/piwigo_ynh/issues
 

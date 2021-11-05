@@ -16,7 +16,7 @@ Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour
 
 **Version incluse :** 12.0.0~ynh1
 
-
+**Démo :** https://piwigo.org/demo
 
 ## Captures d'écran
 
@@ -36,6 +36,9 @@ In addition to Piwigo core features, the following are made available with this 
 
 ## Documentations et ressources
 
+* Site officiel de l'app : http://piwigo.org
+* Documentation officielle de l'admin : https://piwigo.org/guides
+* Dépôt de code officiel de l'app : https://github.com/Piwigo/Piwigo
 * Documentation YunoHost pour cette app : https://yunohost.org/app_piwigo
 * Signaler un bug : https://github.com/YunoHost-Apps/piwigo_ynh/issues
 
