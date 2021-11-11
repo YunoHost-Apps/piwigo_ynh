@@ -13,7 +13,7 @@
 		setup_private=1
 		setup_public=1
 		upgrade=1
-		upgrade=1	from_commit=d28c7cd4613a7455f316c91920a065676730ca46
+		upgrade=1	from_commit=bc9ab6f21a7dcaab9245ef5cbfc9d6c4bd026925
 		backup_restore=1
 		multi_instance=1
 		change_url=1
@@ -21,6 +21,6 @@
 Email=
 Notification=none
 ;;; Upgrade options
-	; commit=d28c7cd4613a7455f316c91920a065676730ca46
-		name=Upgrade to upstream version 2.9.5
+	; commit=bc9ab6f21a7dcaab9245ef5cbfc9d6c4bd026925
+		name=12.0.0
 		manifest_arg=domain=DOMAIN&path=PATH&admin=USER&language=fr&is_public=1&
