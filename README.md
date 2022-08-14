@@ -20,6 +20,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 
 **Shipped version:** 12.3.0~ynh1
 
+
 **Demo:** https://piwigo.org/demo
 
 ## Screenshots
