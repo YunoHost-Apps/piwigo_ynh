@@ -18,7 +18,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 [Piwigo](http://piwigo.org) is a photo gallery software for the web, built by an active community of users and developers. Extensions make Piwigo easily customizable.
 
 
-**Shipped version:** 13.0.0~ynh1
+**Shipped version:** 13.1.0~ynh1
 
 **Demo:** https://piwigo.org/demo
 
