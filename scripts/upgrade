@@ -20,7 +20,6 @@ domain=$(ynh_app_setting_get --app=$app --key=domain)
 path_url=$(ynh_app_setting_get --app=$app --key=path)
 language=$(ynh_app_setting_get --app=$app --key=language)
 admin=$(ynh_app_setting_get --app=$app --key=admin)
-is_public=$(ynh_app_setting_get --app=$app --key=is_public)
 final_path=$(ynh_app_setting_get --app=$app --key=final_path)
 db_name=$(ynh_app_setting_get --app=$app --key=db_name)
 db_user=$db_name
@@ -193,12 +192,6 @@ ynh_add_nginx_config
 #=================================================
 ynh_script_progression --message="Upgrading Piwigo with cURL..." --weight=6
 
-# Set the app as temporarily public for cURL call
-if ! ynh_permission_has_user --permission="main" --user="visitors"
-then
-    ynh_permission_update --permission="main" --add="visitors"
-fi
-
 # Reload NGINX
 ynh_systemd_action --service_name=nginx --action=reload
 
@@ -257,9 +250,6 @@ if [ -f $final_path/plugins/Ldap_Login/data.dat ] ; then
 	ynh_secure_remove --file=$final_path/plugins/Ldap_Login/data.dat
 fi
 
-# Remove the public access
-ynh_permission_update --permission="main" --remove="visitors"
-
 #=================================================
 # GENERIC FINALIZATION
 #=================================================
@@ -275,19 +265,6 @@ touch "/var/log/${app}FailedLogins.log"
 chown $app: "/var/log/${app}FailedLogins.log"
 
 ynh_add_fail2ban_config --logpath="/var/log/${app}FailedLogins.log" --failregex="ip=<HOST>" --max_retry=6
-
-#=================================================
-# SETUP SSOWAT
-#=================================================
-ynh_script_progression --message="Configuring permissions..." --weight=1
-
-# Make app public if necessary
-if [ $is_public -eq 1 ]
-then
-	# Everyone can access the app.
-	# The "main" permission is automatically created before the install script.
-	ynh_permission_update --permission="main" --add="visitors"
-fi
 
 #=================================================
 # RELOAD NGINX
