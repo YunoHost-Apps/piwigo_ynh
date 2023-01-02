@@ -7,7 +7,7 @@
 YNH_PHP_VERSION="8.0"
 
 # dependencies used by the app
-pkg_dependencies="imagemagick php${YNH_PHP_VERSION}-gd php${YNH_PHP_VERSION}-imagick php${YNH_PHP_VERSION}-xml php${YNH_PHP_VERSION}-mbstring php${YNH_PHP_VERSION}-mysqli"
+pkg_dependencies="imagemagick php${YNH_PHP_VERSION}-gd php${YNH_PHP_VERSION}-imagick php${YNH_PHP_VERSION}-xml php${YNH_PHP_VERSION}-mbstring php${YNH_PHP_VERSION}-mysqli php${YNH_PHP_VERSION}-ldap"
 
 #=================================================
 # PERSONAL HELPERS
