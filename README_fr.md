@@ -5,26 +5,26 @@ It shall NOT be edited by hand.
 
 # Piwigo pour YunoHost
 
-[![Niveau d'intégration](https://dash.yunohost.org/integration/piwigo.svg)](https://dash.yunohost.org/appci/app/piwigo) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/piwigo.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/piwigo.maintain.svg)  
+[![Niveau d’intégration](https://dash.yunohost.org/integration/piwigo.svg)](https://dash.yunohost.org/appci/app/piwigo) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/piwigo.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/piwigo.maintain.svg)
 [![Installer Piwigo avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=piwigo)
 
 *[Read this readme in english.](./README.md)*
 
-> *Ce package vous permet d'installer Piwigo rapidement et simplement sur un serveur YunoHost.
-Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l'installer et en profiter.*
+> *Ce package vous permet d’installer Piwigo rapidement et simplement sur un serveur YunoHost.
+Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l’installer et en profiter.*
 
-## Vue d'ensemble
+## Vue d’ensemble
 
 [Piwigo](http://piwigo.org) est un logiciel de galerie photo pour le web, construit par une communauté active d'utilisateurs et de développeurs. Des extensions rendent Piwigo facilement personnalisable.
 
 
-**Version incluse :** 13.4.0~ynh1
+**Version incluse :** 13.5.0~ynh1
 
 **Démo :** https://piwigo.org/demo
 
-## Captures d'écran
+## Captures d’écran
 
-![Capture d'écran de Piwigo](./doc/screenshots/screenshot_Piwigo.jpg)
+![Capture d’écran de Piwigo](./doc/screenshots/screenshot_Piwigo.jpg)
 
 ## Avertissements / informations importantes
 
@@ -40,9 +40,9 @@ En plus des fonctionnalités de base de Piwigo, les éléments suivants sont mis
 
 ## Documentations et ressources
 
-* Site officiel de l'app : <http://piwigo.org>
-* Documentation officielle de l'admin : <https://piwigo.org/guides>
-* Dépôt de code officiel de l'app : <https://github.com/Piwigo/Piwigo>
+* Site officiel de l’app : <http://piwigo.org>
+* Documentation officielle de l’admin : <https://piwigo.org/guides>
+* Dépôt de code officiel de l’app : <https://github.com/Piwigo/Piwigo>
 * Documentation YunoHost pour cette app : <https://yunohost.org/app_piwigo>
 * Signaler un bug : <https://github.com/YunoHost-Apps/piwigo_ynh/issues>
 
@@ -58,4 +58,4 @@ ou
 sudo yunohost app upgrade piwigo -u https://github.com/YunoHost-Apps/piwigo_ynh/tree/testing --debug
 ```
 
-**Plus d'infos sur le packaging d'applications :** <https://yunohost.org/packaging_apps>
+**Plus d’infos sur le packaging d’applications :** <https://yunohost.org/packaging_apps>

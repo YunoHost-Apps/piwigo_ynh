@@ -5,7 +5,7 @@ It shall NOT be edited by hand.
 
 # Piwigo for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/piwigo.svg)](https://dash.yunohost.org/appci/app/piwigo) ![Working status](https://ci-apps.yunohost.org/ci/badges/piwigo.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/piwigo.maintain.svg)  
+[![Integration level](https://dash.yunohost.org/integration/piwigo.svg)](https://dash.yunohost.org/appci/app/piwigo) ![Working status](https://ci-apps.yunohost.org/ci/badges/piwigo.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/piwigo.maintain.svg)
 [![Install Piwigo with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=piwigo)
 
 *[Lire ce readme en français.](./README_fr.md)*
@@ -18,7 +18,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 [Piwigo](http://piwigo.org) is a photo gallery software for the web, built by an active community of users and developers. Extensions make Piwigo easily customizable.
 
 
-**Shipped version:** 13.4.0~ynh1
+**Shipped version:** 13.5.0~ynh1
 
 **Demo:** https://piwigo.org/demo
 
