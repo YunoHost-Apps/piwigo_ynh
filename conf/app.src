@@ -1,5 +1,5 @@
-SOURCE_URL=https://piwigo.org/download/dlcounter.php?code=13.5.0
-SOURCE_SUM=cfb58972efa8300b3e8a220266c624290dabcfe95e6205d91a69f3819431d364
+SOURCE_URL=https://piwigo.org/download/dlcounter.php?code=13.6.0
+SOURCE_SUM=b0060f52199afcf19e8fdc0d99b4f0be26df60dcd316f30f9094315635c6a2df
 SOURCE_SUM_PRG=sha256sum
 SOURCE_FORMAT=zip
 SOURCE_IN_SUBDIR=true
