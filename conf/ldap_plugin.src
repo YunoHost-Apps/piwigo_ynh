@@ -1,5 +1,5 @@
-SOURCE_URL=https://piwigo.org/ext/download.php?rid=7036
-SOURCE_SUM=3c22652f6c0653aaeebe239435796748ee57612ad44e8e5f2553277545d36e5e
+SOURCE_URL=https://piwigo.org/ext/download.php?rid=8871
+SOURCE_SUM=0ae60f1c6642911d82f01e8387d1d73e9da1b036ca337fa48989b11b482bd91d
 SOURCE_SUM_PRG=sha256sum
 SOURCE_FORMAT=zip
 SOURCE_IN_SUBDIR=true
