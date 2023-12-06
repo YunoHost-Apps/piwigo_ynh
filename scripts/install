@@ -89,10 +89,10 @@ ynh_local_curl "/install.php?language=$applanguage" "install=true" "dbhost=127.0
 ynh_script_progression --message="Configuring Piwigo..."
 
 # Change local config
-ynh_add_config --template="../conf/config.inc.php" --destination="$install_dir/local/config/config.inc.php"
+ynh_add_config --template="config.inc.php" --destination="$install_dir/local/config/config.inc.php"
 
 # Setup database in local/config/database.inc.php
-ynh_add_config --template="../conf/database.inc.php" --destination="$install_dir/local/config/database.inc.php"
+ynh_add_config --template="database.inc.php" --destination="$install_dir/local/config/database.inc.php"
 
 chmod 750 "$install_dir"
 chmod -R o-rwx "$install_dir"

@@ -296,10 +296,10 @@ $conf['fs_quick_check_period'] = 24*60*60;
 $conf['send_bcc_mail_webmaster'] = false;
 
 // define the name of sender mail: if value is empty, gallery title is used
-$conf['mail_sender_name'] = '';
+$conf['mail_sender_name'] = '__APP__';
 
 // define the email of sender mail: if value is empty, webmaster email is used
-$conf['mail_sender_email'] = '';
+$conf['mail_sender_email'] = '__APP__@__DOMAIN__';
 
 // set true to allow text/html emails
 $conf['mail_allow_html'] = true;
@@ -831,12 +831,12 @@ $conf['light_slideshow'] = true;
 // the local data directory is used to store data such as compiled templates,
 // plugin variables, combined css/javascript or resized images. Beware of
 // mandatory trailing slash.
-$conf['data_location'] = '_data/';
+$conf['data_location'] = '__DATA_DIR__/_data/';
 
 // where should the API/UploadForm add photos? This path must be relative to
 // the Piwigo installation directory (but can be outside, as long as it's
 // reachable from your webserver).
-$conf['upload_dir'] = './upload';
+$conf['upload_dir'] = '__DATA_DIR__/upload';
 
 // where should the user be guided when there is no photo in his gallery yet?
 $conf['no_photo_yet_url'] = 'admin.php?page=photos_add';
