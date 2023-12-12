@@ -19,7 +19,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 [Piwigo](http://piwigo.org) is a photo gallery software for the web, built by an active community of users and developers. Extensions make Piwigo easily customizable.
 
 
-**Shipped version:** 13.8.0~ynh1
+**Shipped version:** 14.0.0~ynh1
 
 **Demo:** https://piwigo.org/demo
 
@@ -44,7 +44,7 @@ In addition to Piwigo core features, the following are made available with this 
 * Official app website: <http://piwigo.org>
 * Official admin documentation: <https://piwigo.org/guides>
 * Upstream app code repository: <https://github.com/Piwigo/Piwigo>
-* YunoHost documentation for this app: <https://yunohost.org/app_piwigo>
+* YunoHost Store: <https://apps.yunohost.org/app/piwigo>
 * Report a bug: <https://github.com/YunoHost-Apps/piwigo_ynh/issues>
 
 ## Developer info
