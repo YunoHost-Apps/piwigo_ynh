@@ -14,13 +14,10 @@ source /usr/share/yunohost/helpers
 #=================================================
 ynh_script_progression --message="Removing NGINX web server configuration..." --weight=2
 
-# Remove the dedicated NGINX config
 ynh_remove_nginx_config
 
-# Remove the dedicated PHP-FPM config
 ynh_remove_fpm_config
 
-# Remove the dedicated Fail2Ban config
 ynh_remove_fail2ban_config
 
 #=================================================

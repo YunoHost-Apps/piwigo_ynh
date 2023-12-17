@@ -68,12 +68,10 @@ chown -R $app:www-data "$install_dir"
 #=================================================
 # PHP-FPM CONFIGURATION
 #=================================================
-ynh_script_progression --message="Upgrading PHP-FPM configuration..." --weight=3
+ynh_script_progression --message="Upgrading system configurations related to $app..." --weight=1
 
-# Create a dedicated PHP-FPM config
 ynh_add_fpm_config
 
-# Create a dedicated NGINX config
 ynh_add_nginx_config
 
 #=================================================
@@ -99,13 +97,13 @@ fi
 #=================================================
 # CONFIGURE PIWIGO
 #=================================================
-ynh_script_progression --message="Configuring Piwigo..."
+ynh_script_progression --message="Configuring $app..." --weight=2
 
 # Change local config
-ynh_add_config --template="../conf/config.inc.php" --destination="$install_dir/local/config/config.inc.php"
+ynh_add_config --template="config.inc.php" --destination="$install_dir/local/config/config.inc.php"
 
 # Setup database in local/config/database.inc.php
-ynh_add_config --template="../conf/database.inc.php" --destination="$install_dir/local/config/database.inc.php"
+ynh_add_config --template="database.inc.php" --destination="$install_dir/local/config/database.inc.php"
 
 chmod 750 "$install_dir"
 chmod -R o-rwx "$install_dir"
@@ -114,7 +112,7 @@ chown -R $app:www-data "$install_dir"
 #=================================================
 # CONFIGURE LDAP PLUGIN
 #=================================================
-ynh_script_progression --message="Configuring LDAP plugin..."
+ynh_script_progression --message="Configuring LDAP plugin..." --weight=2
 
 # Disable LDAP plugin to avoid warning messages during API call
 ynh_mysql_connect_as --user=$db_name --password=$db_pwd --database=$db_name <<< "DELETE FROM plugins WHERE id='Ldap_Login';"

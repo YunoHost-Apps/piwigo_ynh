@@ -36,12 +36,10 @@ chown -R $app:www-data "$install_dir"
 #=================================================
 # PHP-FPM CONFIGURATION
 #=================================================
-ynh_script_progression --message="Configuring PHP-FPM..." --weight=2
+ynh_script_progression --message="Adding system configurations related to $app..." --weight=1
 
-# Create a dedicated PHP-FPM config
 ynh_add_fpm_config
 
-# Create a dedicated NGINX config
 ynh_add_nginx_config
 
 #=================================================
@@ -86,7 +84,7 @@ ynh_local_curl "/install.php?language=$applanguage" "install=true" "dbhost=127.0
 #=================================================
 # CONFIGURE PIWIGO
 #=================================================
-ynh_script_progression --message="Configuring Piwigo..."
+ynh_script_progression --message="Configuring $app..." --weight=2
 
 # Change local config
 ynh_add_config --template="config.inc.php" --destination="$install_dir/local/config/config.inc.php"
@@ -101,7 +99,7 @@ chown -R $app:www-data "$install_dir"
 #=================================================
 # ADD LDAP PLUGIN
 #=================================================
-ynh_script_progression --message="Configuring LDAP plugin..."
+ynh_script_progression --message="Configuring LDAP plugin..." --weight=2
 
 # Activate the LDAP plugin using the WS API
 
