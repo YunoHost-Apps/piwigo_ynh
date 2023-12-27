@@ -47,7 +47,7 @@ ynh_add_nginx_config
 #=================================================
 # CREATE DATA DIRECTORY
 #=================================================
-ynh_script_progression --message="Creating a data directory..."
+ynh_script_progression --message="Creating a data directory..." --weight=1
 
 ln -sd $data_dir/_data $install_dir/_data
 ln -sd $data_dir/upload $install_dir/upload
