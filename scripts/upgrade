@@ -17,43 +17,28 @@ then
 fi
 
 #=================================================
-# CHECK VERSION
-#=================================================
-
-upgrade_type=$(ynh_check_app_version_changed)
-
-#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
+ynh_script_progression --message="Upgrading source files..." --weight=3
 
-# Get rid of legacy symlinks
-[ -L "$install_dir/_data" ] && ynh_secure_remove "$install_dir/_data" || true
-[ -L "$install_dir/galleries" ] && ynh_secure_remove "$install_dir/galleries" || true
-[ -L "$install_dir/upload" ] && ynh_secure_remove "$install_dir/upload" || true
+ynh_setup_source --dest_dir="$install_dir"
+ynh_setup_source --dest_dir="$install_dir/plugins/Ldap_Login" --source_id=ldap_plugin
+ynh_setup_source --dest_dir="$install_dir/plugins" --source_id=log_failed_logins_plugin
 
-if [ "$upgrade_type" == "UPGRADE_APP" ]
+# We don't want to keep those in the install dir, they already are in $data_dir
+if [ -d "$install_dir/_data" ] && [ ! -L "$install_dir/_data" ]
 then
-	ynh_script_progression --message="Upgrading source files..." --weight=3
-
-	ynh_setup_source --dest_dir="$install_dir"
-	ynh_setup_source --dest_dir="$install_dir/plugins/Ldap_Login" --source_id=ldap_plugin
-	ynh_setup_source --dest_dir="$install_dir/plugins" --source_id=log_failed_logins_plugin
-
-    # We don't want to keep those in the install dir, they already are in $data_dir
-    if [ -d "$install_dir/_data" ] && [ ! -L "$install_dir/_data" ]
-    then
-        ynh_secure_remove "$install_dir/_data"
-    fi
-    if [ -d "$install_dir/galleries" ] && [ ! -L "$install_dir/galleries" ]
-    then
-        ynh_secure_remove "$install_dir/galleries"
-    fi
-    if [ -d "$install_dir/upload" ] && [ ! -L "$install_dir/upload" ]
-    then
-        ynh_secure_remove "$install_dir/upload"
-    fi
-
+    ynh_secure_remove "$install_dir/_data"
 fi
+if [ -d "$install_dir/galleries" ] && [ ! -L "$install_dir/galleries" ]
+then
+    ynh_secure_remove "$install_dir/galleries"
+fi
+if [ -d "$install_dir/upload" ] && [ ! -L "$install_dir/upload" ]
+then
+    ynh_secure_remove "$install_dir/upload"
+fi
+
 
 chmod 750 "$data_dir"
 chmod -R o-rwx "$data_dir"
