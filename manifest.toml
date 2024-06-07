@@ -73,8 +73,8 @@ ram.runtime = "50M"
     autoupdate.strategy = "latest_github_release"
 
     [resources.sources.log_failed_logins_plugin]
-    url = "http://piwigo.org/ext/download.php?rid=5525"
-    sha256 = "85b9a06f2c7ca8ae9698e6151c7631f519c945f696b02da72f9ff53243d7e4ca"
+    url = "http://piwigo.org/ext/download.php?rid=8501"
+    sha256 = "8c21fb42675968ffaf41bd0735cf1b0541756550e0a6b6d3357f3aaaa84f1bd5"
     in_subdir = false
     format = "zip"
 
