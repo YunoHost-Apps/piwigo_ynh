@@ -92,12 +92,12 @@ ram.runtime = "50M"
     packages = [
         "mariadb-server",
         "imagemagick",
-        "php8.0-gd",
-        "php8.0-imagick",
-        "php8.0-xml",
-        "php8.0-mbstring",
-        "php8.0-mysqli",
-        "php8.0-ldap",
+        "php8.3-gd",
+        "php8.3-imagick",
+        "php8.3-xml",
+        "php8.3-mbstring",
+        "php8.3-mysqli",
+        "php8.3-ldap",
     ]
 
     [resources.database]

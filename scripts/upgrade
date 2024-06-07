@@ -83,11 +83,14 @@ ynh_mysql_connect_as --user="$db_name" --password="$db_pwd" --database="$db_name
 
 # ... isn't there a way to enable the damn LDAP login plugin from the command line or something ...
 ynh_local_curl "/ws.php?format=json" "method=pwg.session.login" "username=$admin" "password=$password"
+
 # Get session token
 status=$(ynh_local_curl "/ws.php?format=json" "method=pwg.session.getStatus")
 pwg_token=$(jq --raw-output .result.pwg_token <<< "$status")
+
 # Activate the Ldap_Login plugin
 ynh_local_curl "/ws.php?format=json" "method=pwg.plugins.performAction" "action=activate" "plugin=Ldap_Login" "pwg_token=$pwg_token"
+
 # Log out
 ynh_local_curl "/ws.php?format=json" "method=pwg.session.logout"
 
