@@ -71,13 +71,17 @@ ynh_script_progression --message="Configuring LDAP plugin..." --weight=2
 
 # Login with admin account
 ynh_local_curl "/ws.php?format=json" "method=pwg.session.login" "username=$admin" "password=$password"
+
 # Get session token
 status=$(ynh_local_curl "/ws.php?format=json" "method=pwg.session.getStatus")
 pwg_token=$(jq --raw-output .result.pwg_token <<< "$status")
+
 # Install the Ldap_Login plugin
 ynh_local_curl "/ws.php?format=json" "method=pwg.plugins.performAction" "action=install" "plugin=Ldap_Login" "pwg_token=$pwg_token"
+
 # Activate the Ldap_Login plugin
 ynh_local_curl "/ws.php?format=json" "method=pwg.plugins.performAction" "action=activate" "plugin=Ldap_Login" "pwg_token=$pwg_token"
+
 # Log out
 ynh_local_curl "/ws.php?format=json" "method=pwg.session.logout"
 
