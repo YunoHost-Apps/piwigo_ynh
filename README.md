@@ -9,7 +9,7 @@ It shall NOT be edited by hand.
 
 [![Install Piwigo with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=piwigo)
 
-*[Read this README is other languages.](./ALL_README.md)*
+*[Read this README in other languages.](./ALL_README.md)*
 
 > *This package allows you to install Piwigo quickly and simply on a YunoHost server.*  
 > *If you don't have YunoHost, please consult [the guide](https://yunohost.org/install) to learn how to install it.*
@@ -19,7 +19,7 @@ It shall NOT be edited by hand.
 Piwigo is a photo gallery software for the web, built by an active community of users and developers. Extensions make Piwigo easily customizable.
 
 
-**Shipped version:** 14.3.0~ynh1
+**Shipped version:** 14.4.0~ynh1
 
 **Demo:** <https://piwigo.org/demo>
 
