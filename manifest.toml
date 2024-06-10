@@ -65,8 +65,8 @@ ram.runtime = "50M"
     autoupdate.strategy = "latest_github_release"
 
     [resources.sources.ldap_plugin]
-    url = "https://piwigo.org/ext/download.php?rid=8962"
-    sha256 = "ba34c461c46c0558b05a33290a009b24461aedc7701e7cf642f3a4d667150787"
+    url = "https://github.com/kipjr/ldap_login/archive/refs/tags/13.8.0.tar.gz"
+    sha256 = "ecb05399eb26de0ef5301fb09d47af9e83732ff6c65ac7703d17104a8f3547c9"
     format = "zip"
 
     autoupdate.upstream = "https://github.com/kipjr/ldap_login"
