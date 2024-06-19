@@ -34,13 +34,6 @@ ynh_restore_file --origin_path="/etc/php/$phpversion/fpm/pool.d/$app.conf"
 
 ynh_restore_file --origin_path="/etc/nginx/conf.d/$domain.d/$app.conf"
 
-touch "/var/log/${app}FailedLogins.log"
-chown "$app:" "/var/log/${app}FailedLogins.log"
-
-ynh_restore_file --origin_path="/etc/fail2ban/jail.d/$app.conf"
-ynh_restore_file --origin_path="/etc/fail2ban/filter.d/$app.conf"
-ynh_systemd_action --action=restart --service_name=fail2ban
-
 #=================================================
 # RELOAD NGINX AND PHP-FPM
 #=================================================

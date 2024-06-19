@@ -86,22 +86,6 @@ UPDATE piwigo_ldap_login_config SET value='0' WHERE param = 'allow_new_users';
 UPDATE piwigo_ldap_login_config SET value='0' WHERE param = 'ld_group_user_active';"
 
 #=================================================
-# GENERIC FINALIZATION
-#=================================================
-# SETUP FAIL2BAN
-#=================================================
-ynh_script_progression --message="Configuring Fail2Ban..." --weight=6
-
-# Configure and activate log_failed_logins plugin
-ynh_mysql_connect_as --user="$db_name" --password="$db_pwd" --database="$db_name" <<< "INSERT INTO plugins (id,state,version) VALUES ('log_failed_logins','active','1.2');"
-ynh_mysql_connect_as --user="$db_name" --password="$db_pwd" --database="$db_name" <<< "INSERT INTO config (param, value) VALUES ('logFailedLoginsFilename','/var/log/${app}FailedLogins.log');"
-
-touch "/var/log/${app}FailedLogins.log"
-chown "$app:" "/var/log/${app}FailedLogins.log"
-
-ynh_add_fail2ban_config --logpath="/var/log/${app}FailedLogins.log" --failregex="ip=<HOST>" --max_retry=6
-
-#=================================================
 # END OF SCRIPT
 #=================================================
 

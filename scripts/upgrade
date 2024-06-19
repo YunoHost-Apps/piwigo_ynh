@@ -104,24 +104,6 @@ if [ -f "$install_dir/plugins/Ldap_Login/data.dat" ] ; then
 fi
 
 #=================================================
-# UPGRADE FAIL2BAN
-#=================================================
-ynh_script_progression --message="Reconfiguring Fail2Ban..." --weight=8
-
-# Configure and activate log_failed_logins plugin
-if ! ynh_mysql_connect_as --user="$db_name" --password="$db_pwd" --database="$db_name" <<< "INSERT INTO plugins (id,state,version) VALUES ('log_failed_logins','active','1.2');" 2>&1 > /dev/null; then
-    ynh_mysql_connect_as --user="$db_name" --password="$db_pwd" --database="$db_name" <<< "UPDATE plugins SET state='active' WHERE id='log_failed_logins';"
-fi
-if ! ynh_mysql_connect_as --user="$db_name" --password="$db_pwd" --database="$db_name" <<< "INSERT INTO config (param, value) VALUES ('logFailedLoginsFilename','/var/log/${app}FailedLogins.log');" 2>&1 > /dev/null; then
-    ynh_mysql_connect_as --user="$db_name" --password="$db_pwd" --database="$db_name" <<< "UPDATE config SET value='/var/log/${app}FailedLogins.log' WHERE param='logFailedLoginsFilename';"
-fi
-
-touch "/var/log/${app}FailedLogins.log"
-chown "$app:" "/var/log/${app}FailedLogins.log"
-
-ynh_add_fail2ban_config --logpath="/var/log/${app}FailedLogins.log" --failregex="ip=<HOST>" --max_retry=6
-
-#=================================================
 # END OF SCRIPT
 #=================================================
 
