@@ -25,7 +25,7 @@ fi
 #=================================================
 ynh_script_progression --message="Upgrading source files..." --weight=3
 
-ynh_setup_source --dest_dir="$install_dir" --full_replace=1 --keep="local/config/config.inc.php local/config/database.inc.php"
+ynh_setup_source --dest_dir="$install_dir" --full_replace=1 --keep="local/config/config.inc.php local/config/database.inc.php _data galleries upload"
 ynh_setup_source --dest_dir="$install_dir/plugins/Ldap_Login" --source_id=ldap_plugin --full_replace=1
 ynh_setup_source --dest_dir="$install_dir/plugins" --source_id=log_failed_logins_plugin --full_replace=1
 

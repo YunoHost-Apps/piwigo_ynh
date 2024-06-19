@@ -83,9 +83,6 @@ ram.runtime = "50M"
 
     [resources.install_dir]
 
-    [resources.data_dir]
-    subdirs =["_data", "galleries", "upload"]
-
     [resources.permissions]
     main.url = "/"
 
