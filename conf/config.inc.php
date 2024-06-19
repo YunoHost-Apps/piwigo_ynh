@@ -312,7 +312,7 @@ $conf['mail_allow_html'] = true;
 // smtp_user/smtp_password: user & password for smtp authentication
 $conf['smtp_host'] = 'localhost:25';
 $conf['smtp_user'] = '__APP__';
-$conf['smtp_password'] = '__MAIL_PWD__';
+$conf['smtp_password'] = '';
 
 // 'ssl' or 'tls'
 $conf['smtp_secure'] = null;
