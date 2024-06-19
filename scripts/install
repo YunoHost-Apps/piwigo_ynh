@@ -27,6 +27,25 @@ chmod -R o-rwx "$install_dir"
 chown -R "$app:www-data" "$install_dir"
 
 #=================================================
+# CREATE LINK TO DATA DIRECTORY
+#=================================================
+ynh_script_progression --message="Creating a data directory..."
+
+ln -sd $data_dir/_data $install_dir/_data
+ln -sd $data_dir/upload $install_dir/upload
+ln -sd $data_dir/galleries $install_dir/galleries
+
+cp -Rp $tmpdir/_data/. $install_dir/_data
+cp -Rp $tmpdir/upload/. $install_dir/upload
+cp -Rp $tmpdir/galleries/. $install_dir/galleries
+
+ynh_secure_remove --file="$tmpdir"
+
+chmod 750 "$data_dir"
+chmod -R o-rwx "$data_dir"
+chown -R $app:www-data "$data_dir"
+
+#=================================================
 # SYSTEM CONFIGURATIONS
 #=================================================
 ynh_script_progression --message="Adding system configurations related to $app..." --weight=1
