@@ -48,7 +48,7 @@ ram.runtime = "50M"
     ask.fr = "Choisissez la langue de l'application"
     type = "select"
     choices = ["fr_FR", "en_UK"]
-    default = "en_UK"
+    default = "fr_FR"
 
     [install.admin]
     type = "user"
