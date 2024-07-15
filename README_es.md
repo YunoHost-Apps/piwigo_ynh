@@ -5,7 +5,7 @@ No se debe editar a mano.
 
 # Piwigo para Yunohost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/piwigo.svg)](https://dash.yunohost.org/appci/app/piwigo) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/piwigo.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/piwigo.maintain.svg)
+[![Nivel de integración](https://dash.yunohost.org/integration/piwigo.svg)](https://ci-apps.yunohost.org/ci/apps/piwigo/) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/piwigo.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/piwigo.maintain.svg)
 
 [![Instalar Piwigo con Yunhost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=piwigo)
 
