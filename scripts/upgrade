@@ -3,10 +3,6 @@
 source _common.sh
 source /usr/share/yunohost/helpers
 
-ynh_app_setting_set_default --key=php_upload_max_filesize --value=100M
-
-ynh_app_setting_set_default --key=php_memory_limit --value=64M
-
 #=================================================
 # ENSURE DOWNWARD COMPATIBILITY
 #=================================================
@@ -20,6 +16,8 @@ else
 fi
 
 ynh_app_setting_set_default --key=password --value="$admin_pwd"
+ynh_app_setting_set_default --key=php_upload_max_filesize --value=100M
+ynh_app_setting_set_default --key=php_memory_limit --value=64M
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -42,7 +40,7 @@ ynh_config_add_nginx
 #=================================================
 # UPGRADE APPLICATION WITH CURL
 #=================================================
-ynh_script_progression "Upgrading Piwigo with cURL..."
+ynh_script_progression "Upgrading $app with cURL..."
 
 # Upgrade Piwigo via cURL
 # Why can't we trigger the migration from the command line somehow...
