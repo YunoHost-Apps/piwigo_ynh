@@ -3,6 +3,10 @@
 source _common.sh
 source /usr/share/yunohost/helpers
 
+ynh_app_setting_set --key=php_upload_max_filesize --value=100M
+
+ynh_app_setting_set --key=php_memory_limit --value=64M
+
 #=================================================
 # INITIALIZE AND STORE SETTINGS
 #=================================================
@@ -10,12 +14,12 @@ source /usr/share/yunohost/helpers
 mail="$(ynh_user_get_info --username=$admin --key=mail)"
 
 # Gotta save the stupid password because we need it during upgrade because there's no way to trigger the upgrade.php script from command line ...
-ynh_app_setting_set --app=$app --key=password --value="$password"
+ynh_app_setting_set --key=password --value="$password"
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
-ynh_script_progression --message="Setting up source files..." --weight=5
+ynh_script_progression "Setting up source files..."
 
 ynh_setup_source --dest_dir="$install_dir"
 ynh_setup_source --dest_dir="$install_dir/plugins/Ldap_Login" --source_id=ldap_plugin
@@ -23,22 +27,21 @@ ynh_setup_source --dest_dir="$install_dir/plugins" --source_id=log_failed_logins
 
 #_create_data_dirs_if_required
 
-chmod -R o-rwx "$install_dir"
-chown -R "$app:www-data" "$install_dir"
-
+#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod -R o-rwx "$install_dir"
+#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R "$app:www-data" "$install_dir"
 #=================================================
 # SYSTEM CONFIGURATIONS
 #=================================================
-ynh_script_progression --message="Adding system configurations related to $app..." --weight=1
+ynh_script_progression "Adding system configurations related to $app..."
 
-ynh_add_fpm_config
+ynh_config_add_phpfpm
 
-ynh_add_nginx_config
+ynh_config_add_nginx
 
 #=================================================
 # SETUP APPLICATION WITH CURL
 #=================================================
-ynh_script_progression --message="Setuping application with CURL..." --weight=5
+ynh_script_progression "Setuping application with CURL..."
 
 # Installation with cURL
 ynh_local_curl "/install.php?language=$language" \
@@ -48,21 +51,20 @@ ynh_local_curl "/install.php?language=$language" \
 #=================================================
 # CONFIGURE PIWIGO
 #=================================================
-ynh_script_progression --message="Configuring $app..." --weight=2
+ynh_script_progression "Configuring $app..."
 
 # Change local config
-ynh_add_config --template="config.inc.php" --destination="$install_dir/local/config/config.inc.php"
+ynh_config_add --template="config.inc.php" --destination="$install_dir/local/config/config.inc.php"
 
 # Setup database in local/config/database.inc.php
-ynh_add_config --template="database.inc.php" --destination="$install_dir/local/config/database.inc.php"
+ynh_config_add --template="database.inc.php" --destination="$install_dir/local/config/database.inc.php"
 
-chmod -R o-rwx "$install_dir"
-chown -R "$app:www-data" "$install_dir"
-
+#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod -R o-rwx "$install_dir"
+#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R "$app:www-data" "$install_dir"
 #=================================================
 # ADD LDAP PLUGIN
 #=================================================
-ynh_script_progression --message="Configuring LDAP plugin..." --weight=2
+ynh_script_progression "Configuring LDAP plugin..."
 
 # Activate the LDAP plugin using the WS API
 
@@ -83,30 +85,28 @@ ynh_local_curl "/ws.php?format=json" "method=pwg.plugins.performAction" "action=
 ynh_local_curl "/ws.php?format=json" "method=pwg.session.logout"
 
 # Edit Ldap_Login plugin configuration
-ynh_mysql_connect_as --user="$db_name" --password="$db_pwd" --database="$db_name" <<< "UPDATE ldap_login_config SET value='ou=users,dc=yunohost,dc=org' WHERE param = 'ld_basedn';
+ynh_mysql_db_shell <<< "UPDATE ldap_login_config SET value='ou=users,dc=yunohost,dc=org' WHERE param = 'ld_basedn';
 UPDATE ldap_login_config SET value='uid' WHERE param = 'ld_user_attr';
 UPDATE ldap_login_config SET value='' WHERE param = 'ld_binddn';
 UPDATE ldap_login_config SET value='0' WHERE param = 'allow_new_users';
 UPDATE ldap_login_config SET value='0' WHERE param = 'ld_group_user_active';"
 
 #=================================================
-# GENERIC FINALIZATION
-#=================================================
 # SETUP FAIL2BAN
 #=================================================
-ynh_script_progression --message="Configuring Fail2Ban..." --weight=6
+ynh_script_progression "Configuring Fail2Ban..."
 
 # Configure and activate log_failed_logins plugin
-ynh_mysql_connect_as --user="$db_name" --password="$db_pwd" --database="$db_name" <<< "INSERT INTO plugins (id,state,version) VALUES ('log_failed_logins','active','1.2');"
-ynh_mysql_connect_as --user="$db_name" --password="$db_pwd" --database="$db_name" <<< "INSERT INTO config (param, value) VALUES ('logFailedLoginsFilename','/var/log/${app}FailedLogins.log');"
+ynh_mysql_db_shell <<< "INSERT INTO plugins (id,state,version) VALUES ('log_failed_logins','active','1.2');"
+ynh_mysql_db_shell <<< "INSERT INTO config (param, value) VALUES ('logFailedLoginsFilename','/var/log/${app}FailedLogins.log');"
 
 touch "/var/log/${app}FailedLogins.log"
 chown "$app:" "/var/log/${app}FailedLogins.log"
 
-ynh_add_fail2ban_config --logpath="/var/log/${app}FailedLogins.log" --failregex="ip=<HOST>" --max_retry=6
+ynh_config_add_fail2ban --logpath="/var/log/${app}FailedLogins.log" --failregex="ip=<HOST>"
 
 #=================================================
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Installation of $app completed" --last
+ynh_script_progression "Installation of $app completed"
