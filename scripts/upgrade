@@ -15,7 +15,6 @@ else
   language="en_UK"
 fi
 
-ynh_app_setting_set_default --key=password --value="$admin_pwd"
 ynh_app_setting_set_default --key=php_upload_max_filesize --value=100M
 ynh_app_setting_set_default --key=php_memory_limit --value=64M
 
