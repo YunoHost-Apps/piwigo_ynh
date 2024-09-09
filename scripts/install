@@ -13,7 +13,6 @@ ynh_app_setting_set --key=php_memory_limit --value=64M
 
 mail="$(ynh_user_get_info --username=$admin --key=mail)"
 
-# Gotta save the stupid password because we need it during upgrade because there's no way to trigger the upgrade.php script from command line ...
 ynh_app_setting_set --key=password --value="$password"
 
 #=================================================
@@ -25,10 +24,6 @@ ynh_setup_source --dest_dir="$install_dir"
 ynh_setup_source --dest_dir="$install_dir/plugins/Ldap_Login" --source_id=ldap_plugin
 ynh_setup_source --dest_dir="$install_dir/plugins" --source_id=log_failed_logins_plugin
 
-#_create_data_dirs_if_required
-
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod -R o-rwx "$install_dir"
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R "$app:www-data" "$install_dir"
 #=================================================
 # SYSTEM CONFIGURATIONS
 #=================================================
@@ -59,8 +54,6 @@ ynh_config_add --template="config.inc.php" --destination="$install_dir/local/con
 # Setup database in local/config/database.inc.php
 ynh_config_add --template="database.inc.php" --destination="$install_dir/local/config/database.inc.php"
 
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod -R o-rwx "$install_dir"
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R "$app:www-data" "$install_dir"
 #=================================================
 # ADD LDAP PLUGIN
 #=================================================
