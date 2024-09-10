@@ -21,10 +21,13 @@ ynh_setup_source --dest_dir="$install_dir"
 ynh_setup_source --dest_dir="$install_dir/plugins/Ldap_Login" --source_id=ldap_plugin
 ynh_setup_source --dest_dir="$install_dir/plugins" --source_id=log_failed_logins_plugin
 
-#_create_data_dirs_if_required
+_create_data_dirs_if_required
 
 chmod -R o-rwx "$install_dir"
 chown -R "$app:www-data" "$install_dir"
+
+chmod -R o-rwx "$data_dir"
+chown -R "$app:www-data" "$data_dir"
 
 #=================================================
 # SYSTEM CONFIGURATIONS
