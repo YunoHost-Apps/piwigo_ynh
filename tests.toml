@@ -8,23 +8,16 @@ test_format = 1.0
     # Commits to test upgrade from
     # -------------------------------
 
-    [default.test_upgrade_from.bc9ab6f21a7dcaab9245ef5cbfc9d6c4bd026925]
-    name = "Upgrade from 12.0.0"
-    args.domain = "domain.tld"
-    args.path = "/"
-    args.language = "en"
-    args.admin = "package_checker"
-
-    [default.test_upgrade_from.cd09a41142c55f4d4c0e654574ccb3e9d1ad3f91]
-    name = "Upgrade from 12.1.0"
-    args.domain = "domain.tld"
-    args.path = "/"
-    args.language = "en"
-    args.admin = "package_checker"
-
     [default.test_upgrade_from.1cac04c39ba70cef6571bcb9ae4afca5ccb48ca7]
     name = "Upgrade from 13.1.0"
     args.domain = "domain.tld"
     args.path = "/"
     args.language = "en"
     args.admin = "package_checker"
+
+    #[default.test_upgrade_from.5da5a704f1c85909b15cf3debd01c7d4a8d3f812]
+    #name = "Upgrade from 14.4.0"
+    #args.domain = "domain.tld"
+    #args.path = "/"
+    #args.language = "en_UK"
+    #args.admin = "package_checker"

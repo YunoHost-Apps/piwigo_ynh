@@ -5,7 +5,7 @@
 
 # YunoHost 上的 Piwigo
 
-[![集成程度](https://dash.yunohost.org/integration/piwigo.svg)](https://dash.yunohost.org/appci/app/piwigo) ![工作状态](https://ci-apps.yunohost.org/ci/badges/piwigo.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/piwigo.maintain.svg)
+[![集成程度](https://dash.yunohost.org/integration/piwigo.svg)](https://ci-apps.yunohost.org/ci/apps/piwigo/) ![工作状态](https://ci-apps.yunohost.org/ci/badges/piwigo.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/piwigo.maintain.svg)
 
 [![使用 YunoHost 安装 Piwigo](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=piwigo)
 
@@ -19,7 +19,7 @@
 Piwigo is a photo gallery software for the web, built by an active community of users and developers. Extensions make Piwigo easily customizable.
 
 
-**分发版本：** 14.3.0~ynh1
+**分发版本：** 14.5.0~ynh1
 
 **演示：** <https://piwigo.org/demo>
 

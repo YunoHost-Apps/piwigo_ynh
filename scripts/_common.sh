@@ -4,10 +4,6 @@
 # COMMON VARIABLES
 #=================================================
 
-#=================================================
-# PERSONAL HELPERS
-#=================================================
-
 _create_data_dirs_if_required() {
     dirs=(_data galleries upload)
     for dir in "${dirs[@]}"; do
@@ -17,6 +13,10 @@ _create_data_dirs_if_required() {
         ynh_secure_remove "$install_dir/$dir"
     done
 }
+
+#=================================================
+# PERSONAL HELPERS
+#=================================================
 
 #=================================================
 # EXPERIMENTAL HELPERS

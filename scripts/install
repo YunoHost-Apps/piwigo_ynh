@@ -71,22 +71,26 @@ ynh_script_progression --message="Configuring LDAP plugin..." --weight=2
 
 # Login with admin account
 ynh_local_curl "/ws.php?format=json" "method=pwg.session.login" "username=$admin" "password=$password"
+
 # Get session token
 status=$(ynh_local_curl "/ws.php?format=json" "method=pwg.session.getStatus")
 pwg_token=$(jq --raw-output .result.pwg_token <<< "$status")
+
 # Install the Ldap_Login plugin
 ynh_local_curl "/ws.php?format=json" "method=pwg.plugins.performAction" "action=install" "plugin=Ldap_Login" "pwg_token=$pwg_token"
+
 # Activate the Ldap_Login plugin
 ynh_local_curl "/ws.php?format=json" "method=pwg.plugins.performAction" "action=activate" "plugin=Ldap_Login" "pwg_token=$pwg_token"
+
 # Log out
 ynh_local_curl "/ws.php?format=json" "method=pwg.session.logout"
 
 # Edit Ldap_Login plugin configuration
-ynh_mysql_connect_as --user="$db_name" --password="$db_pwd" --database="$db_name" <<< "UPDATE piwigo_ldap_login_config SET value='ou=users,dc=yunohost,dc=org' WHERE param = 'ld_basedn';
-UPDATE piwigo_ldap_login_config SET value='uid' WHERE param = 'ld_user_attr';
-UPDATE piwigo_ldap_login_config SET value='' WHERE param = 'ld_binddn';
-UPDATE piwigo_ldap_login_config SET value='0' WHERE param = 'allow_new_users';
-UPDATE piwigo_ldap_login_config SET value='0' WHERE param = 'ld_group_user_active';"
+ynh_mysql_connect_as --user="$db_name" --password="$db_pwd" --database="$db_name" <<< "UPDATE ldap_login_config SET value='ou=users,dc=yunohost,dc=org' WHERE param = 'ld_basedn';
+UPDATE ldap_login_config SET value='uid' WHERE param = 'ld_user_attr';
+UPDATE ldap_login_config SET value='' WHERE param = 'ld_binddn';
+UPDATE ldap_login_config SET value='0' WHERE param = 'allow_new_users';
+UPDATE ldap_login_config SET value='0' WHERE param = 'ld_group_user_active';"
 
 #=================================================
 # GENERIC FINALIZATION

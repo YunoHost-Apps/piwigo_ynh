@@ -26,8 +26,8 @@ fi
 ynh_script_progression --message="Upgrading source files..." --weight=3
 
 ynh_setup_source --dest_dir="$install_dir" --full_replace=1 --keep="local/config/config.inc.php local/config/database.inc.php"
-ynh_setup_source --dest_dir="$install_dir/plugins/Ldap_Login" --source_id=ldap_plugin --full_replace=1
-ynh_setup_source --dest_dir="$install_dir/plugins" --source_id=log_failed_logins_plugin --full_replace=1
+ynh_setup_source --dest_dir="$install_dir/plugins/Ldap_Login" --source_id=ldap_plugin #--full_replace=1
+ynh_setup_source --dest_dir="$install_dir/plugins" --source_id=log_failed_logins_plugin #--full_replace=1
 
 _create_data_dirs_if_required
 
@@ -83,20 +83,23 @@ ynh_mysql_connect_as --user="$db_name" --password="$db_pwd" --database="$db_name
 
 # ... isn't there a way to enable the damn LDAP login plugin from the command line or something ...
 ynh_local_curl "/ws.php?format=json" "method=pwg.session.login" "username=$admin" "password=$password"
+
 # Get session token
 status=$(ynh_local_curl "/ws.php?format=json" "method=pwg.session.getStatus")
 pwg_token=$(jq --raw-output .result.pwg_token <<< "$status")
+
 # Activate the Ldap_Login plugin
 ynh_local_curl "/ws.php?format=json" "method=pwg.plugins.performAction" "action=activate" "plugin=Ldap_Login" "pwg_token=$pwg_token"
+
 # Log out
 ynh_local_curl "/ws.php?format=json" "method=pwg.session.logout"
 
 # Edit Ldap_Login plugin configuration
-ynh_mysql_connect_as --user="$db_name" --password="$db_pwd" --database="$db_name" <<< "UPDATE piwigo_ldap_login_config SET value='ou=users,dc=yunohost,dc=org' WHERE param = 'ld_basedn';
-UPDATE piwigo_ldap_login_config SET value='uid' WHERE param = 'ld_user_attr';
-UPDATE piwigo_ldap_login_config SET value='' WHERE param = 'ld_binddn';
-UPDATE piwigo_ldap_login_config SET value='0' WHERE param = 'allow_new_users';
-UPDATE piwigo_ldap_login_config SET value='0' WHERE param = 'ld_group_user_active';"
+ynh_mysql_connect_as --user="$db_name" --password="$db_pwd" --database="$db_name" <<< "UPDATE ldap_login_config SET value='ou=users,dc=yunohost,dc=org' WHERE param = 'ld_basedn';
+UPDATE ldap_login_config SET value='uid' WHERE param = 'ld_user_attr';
+UPDATE ldap_login_config SET value='' WHERE param = 'ld_binddn';
+UPDATE ldap_login_config SET value='0' WHERE param = 'allow_new_users';
+UPDATE ldap_login_config SET value='0' WHERE param = 'ld_group_user_active';"
 
 # Remove configuration file for older plugin version
 if [ -f "$install_dir/plugins/Ldap_Login/data.dat" ] ; then

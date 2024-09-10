@@ -5,7 +5,7 @@ EZ editatu eskuz.
 
 # Piwigo YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/piwigo.svg)](https://dash.yunohost.org/appci/app/piwigo) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/piwigo.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/piwigo.maintain.svg)
+[![Integrazio maila](https://dash.yunohost.org/integration/piwigo.svg)](https://ci-apps.yunohost.org/ci/apps/piwigo/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/piwigo.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/piwigo.maintain.svg)
 
 [![Instalatu Piwigo YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=piwigo)
 
@@ -19,7 +19,7 @@ EZ editatu eskuz.
 Piwigo is a photo gallery software for the web, built by an active community of users and developers. Extensions make Piwigo easily customizable.
 
 
-**Paketatutako bertsioa:** 14.3.0~ynh1
+**Paketatutako bertsioa:** 14.5.0~ynh1
 
 **Demoa:** <https://piwigo.org/demo>
 

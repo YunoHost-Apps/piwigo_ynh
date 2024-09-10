@@ -7,7 +7,7 @@ name = "Piwigo"
 description.en = "Open source photo gallery for the web"
 description.fr = "Galerie de photos open source pour le web"
 
-version = "14.3.0~ynh1"
+version = "14.5.0~ynh1"
 
 maintainers = ["JimboJoe"]
 
@@ -48,7 +48,7 @@ ram.runtime = "50M"
     ask.fr = "Choisissez la langue de l'application"
     type = "select"
     choices = ["fr_FR", "en_UK"]
-    default = "en_UK"
+    default = "fr_FR"
 
     [install.admin]
     type = "user"
@@ -58,32 +58,32 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://piwigo.org/download/dlcounter.php?code=14.3.0"
-    sha256 = "ab1d329afbb092ef74534bc09f56ef75a81d26443383e6ae47fe9801808552ef"
+    url = "https://piwigo.org/download/dlcounter.php?code=14.5.0"
+    sha256 = "ca7364de37f04cb4d0244b7832c6184076623e7a6b63cf86bcecef04f80b09b7"
     format = "zip"
 
     autoupdate.strategy = "latest_github_release"
 
     [resources.sources.ldap_plugin]
-    url = "https://piwigo.org/ext/download.php?rid=7036"
-    sha256 = "3c22652f6c0653aaeebe239435796748ee57612ad44e8e5f2553277545d36e5e"
+    url = "https://piwigo.org/ext/download.php?rid=8962"
+    sha256 = "ba34c461c46c0558b05a33290a009b24461aedc7701e7cf642f3a4d667150787"
     format = "zip"
 
     autoupdate.upstream = "https://github.com/kipjr/ldap_login"
     autoupdate.strategy = "latest_github_release"
 
     [resources.sources.log_failed_logins_plugin]
-    url = "http://piwigo.org/ext/download.php?rid=5525"
-    sha256 = "85b9a06f2c7ca8ae9698e6151c7631f519c945f696b02da72f9ff53243d7e4ca"
+    url = "http://piwigo.org/ext/download.php?rid=8501"
+    sha256 = "8c21fb42675968ffaf41bd0735cf1b0541756550e0a6b6d3357f3aaaa84f1bd5"
     in_subdir = false
     format = "zip"
 
     [resources.system_user]
-    allow_email = true
-
-    [resources.install_dir]
+    #allow_email = true
 
     [resources.data_dir]
+    
+    [resources.install_dir]
 
     [resources.permissions]
     main.url = "/"
@@ -92,12 +92,12 @@ ram.runtime = "50M"
     packages = [
         "mariadb-server",
         "imagemagick",
-        "php8.0-gd",
-        "php8.0-imagick",
-        "php8.0-xml",
-        "php8.0-mbstring",
-        "php8.0-mysqli",
-        "php8.0-ldap",
+        "php8.3-gd",
+        "php8.3-imagick",
+        "php8.3-xml",
+        "php8.3-mbstring",
+        "php8.3-mysqli",
+        "php8.3-ldap",
     ]
 
     [resources.database]
