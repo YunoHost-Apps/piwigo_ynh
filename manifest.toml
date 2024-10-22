@@ -82,6 +82,8 @@ ram.runtime = "50M"
     [resources.system_user]
     #allow_email = true
 
+    [resources.data_dir]
+    
     [resources.install_dir]
     group = "www-data:r-x"
 
