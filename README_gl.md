@@ -21,7 +21,7 @@ NON debe editarse manualmente.
 Piwigo is a photo gallery software for the web, built by an active community of users and developers. Extensions make Piwigo easily customizable.
 
 
-**Versión proporcionada:** 14.5.0~ynh1
+**Versión proporcionada:** 15.1.0~ynh1
 
 **Demo:** <https://piwigo.org/demo>
 
