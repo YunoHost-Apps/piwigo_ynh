@@ -5,7 +5,9 @@ Hij mag NIET handmatig aangepast worden.
 
 # Piwigo voor Yunohost
 
-[![Integratieniveau](https://dash.yunohost.org/integration/piwigo.svg)](https://ci-apps.yunohost.org/ci/apps/piwigo/) ![Mate van functioneren](https://ci-apps.yunohost.org/ci/badges/piwigo.status.svg) ![Onderhoudsstatus](https://ci-apps.yunohost.org/ci/badges/piwigo.maintain.svg)
+[![Integratieniveau](https://apps.yunohost.org/badge/integration/piwigo)](https://ci-apps.yunohost.org/ci/apps/piwigo/)
+![Mate van functioneren](https://apps.yunohost.org/badge/state/piwigo)
+![Onderhoudsstatus](https://apps.yunohost.org/badge/maintained/piwigo)
 
 [![Piwigo met Yunohost installeren](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=piwigo)
 

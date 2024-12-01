@@ -5,7 +5,9 @@ Ini TIDAK boleh diedit dengan tangan.
 
 # Piwigo untuk YunoHost
 
-[![Tingkat integrasi](https://dash.yunohost.org/integration/piwigo.svg)](https://ci-apps.yunohost.org/ci/apps/piwigo/) ![Status kerja](https://ci-apps.yunohost.org/ci/badges/piwigo.status.svg) ![Status pemeliharaan](https://ci-apps.yunohost.org/ci/badges/piwigo.maintain.svg)
+[![Tingkat integrasi](https://apps.yunohost.org/badge/integration/piwigo)](https://ci-apps.yunohost.org/ci/apps/piwigo/)
+![Status kerja](https://apps.yunohost.org/badge/state/piwigo)
+![Status pemeliharaan](https://apps.yunohost.org/badge/maintained/piwigo)
 
 [![Pasang Piwigo dengan YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=piwigo)
 

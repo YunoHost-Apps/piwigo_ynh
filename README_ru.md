@@ -5,7 +5,9 @@
 
 # Piwigo для YunoHost
 
-[![Уровень интеграции](https://dash.yunohost.org/integration/piwigo.svg)](https://ci-apps.yunohost.org/ci/apps/piwigo/) ![Состояние работы](https://ci-apps.yunohost.org/ci/badges/piwigo.status.svg) ![Состояние сопровождения](https://ci-apps.yunohost.org/ci/badges/piwigo.maintain.svg)
+[![Уровень интеграции](https://apps.yunohost.org/badge/integration/piwigo)](https://ci-apps.yunohost.org/ci/apps/piwigo/)
+![Состояние работы](https://apps.yunohost.org/badge/state/piwigo)
+![Состояние сопровождения](https://apps.yunohost.org/badge/maintained/piwigo)
 
 [![Установите Piwigo с YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=piwigo)
 

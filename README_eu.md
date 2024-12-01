@@ -5,7 +5,9 @@ EZ editatu eskuz.
 
 # Piwigo YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/piwigo.svg)](https://ci-apps.yunohost.org/ci/apps/piwigo/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/piwigo.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/piwigo.maintain.svg)
+[![Integrazio maila](https://apps.yunohost.org/badge/integration/piwigo)](https://ci-apps.yunohost.org/ci/apps/piwigo/)
+![Funtzionamendu egoera](https://apps.yunohost.org/badge/state/piwigo)
+![Mantentze egoera](https://apps.yunohost.org/badge/maintained/piwigo)
 
 [![Instalatu Piwigo YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=piwigo)
 
