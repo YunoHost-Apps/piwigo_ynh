@@ -81,6 +81,8 @@ ram.runtime = "50M"
     #allow_email = true
 
     [resources.data_dir]
+    subdirs = [ "_data", "upload" ]
+    group = "www-data:rx"
     
     [resources.install_dir]
 
