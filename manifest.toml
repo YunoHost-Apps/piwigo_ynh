@@ -58,8 +58,8 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://github.com/Piwigo/Piwigo/archive/refs/tags/15.3.0.tar.gz"
-    sha256 = "4aace28c8e88d2961ddfb0c031e1c5011677382d30d0bc73457c64a50816f98f"
+    url = "https://piwigo.org/download/dlcounter.php?code=15.3.0"
+    sha256 = "59600f4119fb73ef3d71050570dde8ab4ec7845e8b9a31bf8b87e2ce13c81cec"
     format = "zip"
 
     autoupdate.strategy = "latest_github_release"
