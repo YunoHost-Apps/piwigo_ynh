@@ -7,7 +7,7 @@ name = "Piwigo"
 description.en = "Open source photo gallery for the web"
 description.fr = "Galerie de photos open source pour le web"
 
-version = "15.1.0~ynh1"
+version = "15.4.0~ynh1"
 
 maintainers = ["JimboJoe"]
 
@@ -58,8 +58,8 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://piwigo.org/download/dlcounter.php?code=15.1.0"
-    sha256 = "ed47dc3d5684969caced625bea478ec8068a1cc86a92b630ac721c3686379c10"
+    url = "https://piwigo.org/download/dlcounter.php?code=15.4.0"
+    sha256 = "6dfdd5099983353888beb76cc289cf75709642957f5160fa19c06902825faad5"
     format = "zip"
 
     autoupdate.strategy = "latest_github_release"
