@@ -58,11 +58,12 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://github.com/Piwigo/Piwigo/archive/refs/tags/15.5.0.tar.gz"
-    sha256 = "ce50471fe420711628fc0c5a7c24d6cfe4788a5f7834132efa6eb8cf05bd0d9e"
+    url = "https://piwigo.org/download/dlcounter.php?code=15.5.0"
+    sha256 = "f7bb7aac6373c7065a926959a542c2b77319b1bcea7d6a6ed9ccda71b83081c0"
     format = "zip"
 
     autoupdate.strategy = "latest_github_release"
+    autoupdate.needs_manual_tweaks = true
 
     [resources.sources.ldap_plugin]
     url = "https://github.com/kipjr/ldap_login/archive/refs/tags/13.8.0.tar.gz"
@@ -80,9 +81,9 @@ ram.runtime = "50M"
     [resources.system_user]
     #allow_email = true
 
-    [resources.data_dir]
-    
     [resources.install_dir]
+
+    [resources.data_dir]
 
     [resources.permissions]
     main.url = "/"
