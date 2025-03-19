@@ -11,6 +11,7 @@ _create_data_dirs_if_required() {
             rsync -a "$install_dir/$dir/" "$data_dir/$dir/"
         fi
         ynh_secure_remove "$install_dir/$dir"
+        ln -s "$data_dir/$dir" "$install_dir/$dir"
     done
 }
 
