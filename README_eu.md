@@ -21,7 +21,7 @@ EZ editatu eskuz.
 Piwigo is a photo gallery software for the web, built by an active community of users and developers. Extensions make Piwigo easily customizable.
 
 
-**Paketatutako bertsioa:** 15.5.0~ynh2
+**Paketatutako bertsioa:** 15.5.0~ynh3
 
 **Demoa:** <https://piwigo.org/demo>
 
