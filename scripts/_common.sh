@@ -10,6 +10,7 @@ _create_data_dirs_if_required() {
         if [ ! -d "$data_dir/$dir" ]; then
             rsync -a "$install_dir/$dir/" "$data_dir/$dir/"
         fi
-        ynh_safe_rm "$install_dir/$dir"
+        ynh_secure_remove "$install_dir/$dir"
+        ln -s "$data_dir/$dir" "$install_dir/$dir"
     done
 }

@@ -7,7 +7,7 @@ name = "Piwigo"
 description.en = "Open source photo gallery for the web"
 description.fr = "Galerie de photos open source pour le web"
 
-version = "15.0.0~ynh1"
+version = "15.5.0~ynh3"
 
 maintainers = ["JimboJoe"]
 
@@ -59,16 +59,16 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://piwigo.org/download/dlcounter.php?code=15.0.0"
-    sha256 = "2bde8695b2579489503b502edf8d1cc6646f1d5d638ab2b17574fc2e9fd27217"
+    url = "https://piwigo.org/download/dlcounter.php?code=15.5.0"
+    sha256 = "f7bb7aac6373c7065a926959a542c2b77319b1bcea7d6a6ed9ccda71b83081c0"
     format = "zip"
 
     autoupdate.strategy = "latest_github_release"
+    autoupdate.needs_manual_tweaks = true
 
     [resources.sources.ldap_plugin]
-    url = "https://piwigo.org/ext/download.php?rid=8962"
-    sha256 = "ba34c461c46c0558b05a33290a009b24461aedc7701e7cf642f3a4d667150787"
-    format = "zip"
+    url = "https://github.com/kipjr/ldap_login/archive/refs/tags/13.8.0.tar.gz"
+    sha256 = "ecb05399eb26de0ef5301fb09d47af9e83732ff6c65ac7703d17104a8f3547c9"
 
     autoupdate.upstream = "https://github.com/kipjr/ldap_login"
     autoupdate.strategy = "latest_github_release"
@@ -82,8 +82,6 @@ ram.runtime = "50M"
     [resources.system_user]
     #allow_email = true
 
-    [resources.data_dir]
-    
     [resources.install_dir]
     group = "www-data:r-x"
     
