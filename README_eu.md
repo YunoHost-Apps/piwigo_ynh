@@ -41,7 +41,7 @@ Piwigo is a photo gallery software for the web, built by an active community of 
 
 Bidali `pull request`a [`testing` abarrera](https://github.com/YunoHost-Apps/piwigo_ynh/tree/testing).
 
-`testing` abarra probatzeko, ondorengoa egin:
+`testing` abarra probatzeko, honakoa egin:
 
 ```bash
 sudo yunohost app install https://github.com/YunoHost-Apps/piwigo_ynh/tree/testing --debug
