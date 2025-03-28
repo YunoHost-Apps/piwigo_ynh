@@ -4,8 +4,8 @@ packaging_format = 2
 
 id = "piwigo"
 name = "Piwigo"
-description.en = "Open source photo gallery for the web"
-description.fr = "Galerie de photos open source pour le web"
+description.en = "Open source photo gallery"
+description.fr = "Galerie de photos open source"
 
 version = "15.5.0~ynh3"
 
@@ -19,7 +19,7 @@ admindoc = "https://piwigo.org/guides"
 code = "https://github.com/Piwigo/Piwigo"
 
 [integration]
-yunohost = ">= 11.2.30"
+yunohost = ">= 12.0.9"
 helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
