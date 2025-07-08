@@ -23,9 +23,9 @@ ynh_app_setting_set_default --key=php_memory_limit --value=64M
 #=================================================
 ynh_script_progression "Upgrading source files..."
 
-ynh_setup_source --dest_dir="$install_dir" --full_replace=1 --keep="local/config/config.inc.php local/config/database.inc.php /plugins /themes"
-ynh_setup_source --dest_dir="$install_dir/plugins/Ldap_Login" --source_id=ldap_plugin #--full_replace=1
-ynh_setup_source --dest_dir="$install_dir/plugins" --source_id=log_failed_logins_plugin #--full_replace=1
+ynh_setup_source --dest_dir="$install_dir" --full_replace --keep="local/config/config.inc.php local/config/database.inc.php /plugins /themes"
+ynh_setup_source --dest_dir="$install_dir/plugins/Ldap_Login" --source_id=ldap_plugin #--full_replace
+ynh_setup_source --dest_dir="$install_dir/plugins" --source_id=log_failed_logins_plugin #--full_replace
 
 _create_data_dirs_if_required
 
