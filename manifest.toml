@@ -7,7 +7,7 @@ name = "Piwigo"
 description.en = "Open source photo gallery"
 description.fr = "Galerie de photos open source"
 
-version = "15.5.0~ynh3"
+version = "15.6.0~ynh1"
 
 maintainers = ["JimboJoe"]
 
@@ -59,17 +59,16 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://piwigo.org/download/dlcounter.php?code=15.5.0"
-    sha256 = "f7bb7aac6373c7065a926959a542c2b77319b1bcea7d6a6ed9ccda71b83081c0"
-    format = "zip"
-
+    url = "https://piwigo.org/download/dlcounter.php?code=15.6.0"
+    sha256 = "6d55f1acf88aa1620140c8432171011b93f4e2576bb905a1fe610f8e8695ed11"
     autoupdate.strategy = "latest_github_release"
+    # After the autoupdater's commit, you need to replace the url with https://piwigo.org/download/dlcounter.php?code=__YNH_APP_UPSTREAM_VERSION__
     autoupdate.needs_manual_tweaks = true
+    format="zip"
 
     [resources.sources.ldap_plugin]
     url = "https://github.com/kipjr/ldap_login/archive/refs/tags/13.8.0.tar.gz"
     sha256 = "ecb05399eb26de0ef5301fb09d47af9e83732ff6c65ac7703d17104a8f3547c9"
-
     autoupdate.upstream = "https://github.com/kipjr/ldap_login"
     autoupdate.strategy = "latest_github_release"
 
