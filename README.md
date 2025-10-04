@@ -8,7 +8,7 @@ It shall NOT be edited by hand.
   Piwigo, packaged for YunoHost
 </h1>
 
-Open source photo gallery for the web
+Open source photo gallery
 
 [![🌐 Official app website](https://img.shields.io/badge/Official_app_website-darkgreen?style=for-the-badge)](http://piwigo.org)
 [![App Demo](https://img.shields.io/badge/App_Demo-blue?style=for-the-badge)](https://piwigo.org/demo)
