@@ -34,6 +34,8 @@ ynh_setup_source --dest_dir="$install_dir/plugins" --source_id=log_failed_logins
 
 _create_data_dirs_if_required
 
+chown $app:www-data -R "$data_dir"
+
 #=================================================
 # PHP-FPM CONFIGURATION
 #=================================================
