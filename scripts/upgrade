@@ -16,7 +16,7 @@ else
 fi
 
 if [ -z "${password:-}" ] && [ -n "${admin_pwd:-}" ] ; then
-  ynh_app_setting_set_default --key=password --value"$admin_pwd"
+  ynh_app_setting_set_default --key=password --value="$admin_pwd"
   ynh_app_setting_delete --key=admin_pwd
 fi
 
