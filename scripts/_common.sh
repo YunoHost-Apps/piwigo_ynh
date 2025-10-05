@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #=================================================
-# COMMON VARIABLES
+# COMMON VARIABLES AND CUSTOM HELPERS
 #=================================================
 
 _create_data_dirs_if_required() {
@@ -10,19 +10,7 @@ _create_data_dirs_if_required() {
         if [ ! -d "$data_dir/$dir" ]; then
             rsync -a "$install_dir/$dir/" "$data_dir/$dir/"
         fi
-        ynh_secure_remove "$install_dir/$dir"
+        ynh_safe_rm "$install_dir/$dir"
         ln -s "$data_dir/$dir" "$install_dir/$dir"
     done
 }
-
-#=================================================
-# PERSONAL HELPERS
-#=================================================
-
-#=================================================
-# EXPERIMENTAL HELPERS
-#=================================================
-
-#=================================================
-# FUTURE OFFICIAL HELPERS
-#=================================================
