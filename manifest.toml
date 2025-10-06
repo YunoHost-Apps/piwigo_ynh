@@ -4,8 +4,8 @@ packaging_format = 2
 
 id = "piwigo"
 name = "Piwigo"
-description.en = "Open source photo gallery"
-description.fr = "Galerie de photos open source"
+description.en = "Host, organize and share your photos"
+description.fr = "Héberger, organiser et partager vos photos"
 
 version = "15.6.0~ynh1"
 
