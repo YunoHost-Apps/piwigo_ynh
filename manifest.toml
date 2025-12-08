@@ -9,7 +9,7 @@ description.fr = "Héberger, organiser et partager vos photos"
 
 version = "16.1.0~ynh1"
 
-maintainers = ["JimboJoe"]
+maintainers = ["fflorent", "JimboJoe"]
 
 [upstream]
 license = "GPL-2.0"
