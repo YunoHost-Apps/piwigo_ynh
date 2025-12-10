@@ -93,7 +93,7 @@ ynh_script_progression "Configuring Fail2Ban..."
 
 # Configure and activate log_failed_logins plugin
 ynh_mysql_db_shell <<< "INSERT INTO plugins (id,state,version) VALUES ('piwigo_failed_logins','active','1.1.1');"
-ynh_mysql_db_shell <<< "INSERT INTO config (param, value) VALUES ('logFailedLoginsFilename','/var/log/${app}FailedLogins.log');"
+ynh_mysql_db_shell <<< "INSERT INTO config (param, value) VALUES ('failed_logins_logfile','/var/log/${app}FailedLogins.log');"
 
 touch "/var/log/${app}FailedLogins.log"
 chown "$app:" "/var/log/${app}FailedLogins.log"
