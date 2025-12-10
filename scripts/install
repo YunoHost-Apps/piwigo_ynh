@@ -83,7 +83,7 @@ ynh_local_curl "/ws.php?format=json" "method=pwg.session.logout"
 ynh_mysql_db_shell <<< "UPDATE ldap_login_config SET value='ou=users,dc=yunohost,dc=org' WHERE param = 'ld_basedn';
 UPDATE ldap_login_config SET value='uid' WHERE param = 'ld_user_attr';
 UPDATE ldap_login_config SET value='' WHERE param = 'ld_binddn';
-UPDATE ldap_login_config SET value='0' WHERE param = 'allow_new_users';
+UPDATE ldap_login_config SET value='0' WHERE param = 'ld_allow_newusers';
 UPDATE ldap_login_config SET value='0' WHERE param = 'ld_group_user_active';"
 
 #=================================================
