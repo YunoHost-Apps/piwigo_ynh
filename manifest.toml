@@ -50,6 +50,23 @@ ram.runtime = "50M"
     choices = ["fr_FR", "en_UK"]
     default = "fr_FR"
 
+    [install.piwigo_webmasters]
+    ask.en = "Users group who can access all administration functionalities"
+    ask.fr = "Groupe d'utilisateurs qui peuvent accéder à toutes les fonctionnalités d'administration"
+    type = "group"
+    default = "admins"
+
+    [install.piwigo_admins]
+    ask.en = "Users group who can access some administration functionalities"
+    ask.fr = "Groupe d'utilisateurs qui peuvent accéder à certaines fonctionnalités d'administration"
+    type = "group"
+
+    [install.piwigo_users]
+    ask.en = "Users group who can't access any administration functionalities but may access to some private content"
+    ask.fr = "Groupe d'utilisateurs qui ne peuvent pas accéder aux fonctionalités d'administration mais à certains contenus privés"
+    type = "group"
+    default = "all_users"
+
     [install.admin]
     type = "user"
 

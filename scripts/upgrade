@@ -92,10 +92,14 @@ ynh_local_curl "/ws.php?format=json" "method=pwg.session.logout"
 
 # Edit Ldap_Login plugin configuration
 ynh_mysql_db_shell <<< "UPDATE ldap_login_config SET value='ou=users,dc=yunohost,dc=org' WHERE param = 'ld_basedn';
-UPDATE ldap_login_config SET value='uid' WHERE param = 'ld_user_attr';
-UPDATE ldap_login_config SET value='' WHERE param = 'ld_binddn';
-UPDATE ldap_login_config SET value='0' WHERE param = 'ld_allow_newusers';
-UPDATE ldap_login_config SET value='0' WHERE param = 'ld_group_user_active';"
+ynh_mysql_db_shell <<< "UPDATE ldap_login_config SET value='ou=groups,dc=yunohost,dc=org' WHERE param = 'ld_group_basedn';
+ynh_mysql_db_shell <<< "UPDATE ldap_login_config SET value='cn=$piwigo_webmasters,ou=groups,dc=yunohost,dc=org' WHERE param = 'ld_group_webmaster';
+ynh_mysql_db_shell <<< "UPDATE ldap_login_config SET value='cn=$piwigo_admins,ou=groups,dc=yunohost,dc=org' WHERE param = 'ld_group_admin';
+ynh_mysql_db_shell <<< "UPDATE ldap_login_config SET value='cn=$piwigo_users,ou=groups,dc=yunohost,dc=org' WHERE param = 'ld_group_user';
+ynh_mysql_db_shell <<< UPDATE ldap_login_config SET value='uid' WHERE param = 'ld_user_attr';
+ynh_mysql_db_shell <<< UPDATE ldap_login_config SET value='' WHERE param = 'ld_binddn';
+ynh_mysql_db_shell <<< UPDATE ldap_login_config SET value='0' WHERE param = 'ld_allow_newusers';
+ynh_mysql_db_shell <<< UPDATE ldap_login_config SET value='0' WHERE param = 'ld_group_user_active';"
 
 # Remove configuration file for older plugin version
 if [ -f "$install_dir/plugins/Ldap_Login/data.dat" ] ; then
