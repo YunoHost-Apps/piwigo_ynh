@@ -114,6 +114,9 @@ fi
 if ! ynh_mysql_db_shell <<< "INSERT INTO config (param, value) VALUES ('failed_logins_logfile','/var/log/${app}FailedLogins.log');" 2>&1 > /dev/null; then
     ynh_mysql_db_shell <<< "UPDATE config SET value='/var/log/${app}FailedLogins.log' WHERE param='failed_logins_logfile';"
 fi
+# Remove configuration for older plugin version
+ynh_mysql_db_shell <<< "DELETE FROM plugins WHERE id='log_failed_logins';"
+ynh_mysql_db_shell <<< "DELETE FROM config WHERE param='logFailedLoginsFilename';"
 
 touch "/var/log/${app}FailedLogins.log"
 chown "$app:" "/var/log/${app}FailedLogins.log"
