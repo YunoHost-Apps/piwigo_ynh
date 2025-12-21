@@ -68,7 +68,7 @@ ram.runtime = "50M"
     [resources.sources.ldap_plugin]
     url = "https://github.com/Kipjr/Ldap_Login/archive/refs/tags/16.1.0-alpha1.tar.gz"
     sha256 = "01a28b13c49fcc533848d5df375dcd00b315049da175c84fc967497bde9061c5"
-    autoupdate.upstream = "https://github.com/kipjr/ldap_login"
+    # autoupdate.upstream = "https://github.com/kipjr/ldap_login"
     # The autoupdate keeps trying to push PRs to downgrade the plugin (currently in version 16.1.0-alpha1) to version 13.8.0
     # Turn that off and either let the upstream plugin release a new stable version or find a work around before reenabling it.
     # autoupdate.strategy = "latest_github_release"
