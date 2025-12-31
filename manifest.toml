@@ -7,7 +7,7 @@ name = "Piwigo"
 description.en = "Host, organize and share your photos"
 description.fr = "Héberger, organiser et partager vos photos"
 
-version = "16.1.0~ynh4"
+version = "16.2.0~ynh1"
 
 maintainers = ["fflorent", "JimboJoe"]
 
@@ -58,8 +58,8 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://piwigo.org/download/dlcounter.php?code=16.1.0"
-    sha256 = "1e2531d6bc7d277aff2a9a6898a17661004e6ba2fc23d9c5747dcaf33143031d"
+    url = "https://piwigo.org/download/dlcounter.php?code=16.2.0"
+    sha256 = "bc27743b7fdda4a1b6692a9b62709e71c221469533e7559617cc19fb8e778003"
     autoupdate.strategy = "latest_github_release"
     # After the autoupdater's commit, you need to replace the url with https://piwigo.org/download/dlcounter.php?code=__YNH_APP_UPSTREAM_VERSION__
     autoupdate.needs_manual_tweaks = true
