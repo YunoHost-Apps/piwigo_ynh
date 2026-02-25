@@ -60,9 +60,9 @@ ram.runtime = "50M"
     [resources.sources.main]
     url = "https://piwigo.org/download/dlcounter.php?code=16.2.0"
     sha256 = "bc27743b7fdda4a1b6692a9b62709e71c221469533e7559617cc19fb8e778003"
-    autoupdate.strategy = "latest_github_release"
-    # After the autoupdater's commit, you need to replace the url with https://piwigo.org/download/dlcounter.php?code=__YNH_APP_UPSTREAM_VERSION__
-    autoupdate.needs_manual_tweaks = true
+    autoupdate.strategy = "latest_webpage_link"
+    autoupdate.upstream = "https://github.com/Piwigo/Piwigo/releases"
+    autoupdate.version_regex = "https://piwigo.org/download/dlcounter.php\\?code=(\\d+\\.\\d+\\.\\d+)"
     format="zip"
 
     [resources.sources.ldap_plugin]
