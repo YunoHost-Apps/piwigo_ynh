@@ -7,7 +7,7 @@ name = "Piwigo"
 description.en = "Host, organize and share your photos"
 description.fr = "Héberger, organiser et partager vos photos"
 
-version = "16.3.0~ynh1"
+version = "16.4.0~ynh1"
 
 maintainers = ["fflorent", "JimboJoe"]
 
@@ -58,8 +58,8 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://piwigo.org/download/dlcounter.php?code=16.3.0"
-    sha256 = "a8b26e98e5aaa339ef43152d196606d352df1026b8ff54a03db3344ecd46df88"
+    url = "https://piwigo.org/download/dlcounter.php?code=16.4.0"
+    sha256 = "72c58a337a1a0639b6ad8dc8f5900a2781fc19091b60ae157eb2ee58c5431c17"
     autoupdate.strategy = "latest_webpage_link"
     autoupdate.upstream = "https://github.com/Piwigo/Piwigo/releases"
     autoupdate.version_regex = "https://piwigo.org/download/dlcounter.php\\?code=(\\d+\\.\\d+\\.\\d+)"
